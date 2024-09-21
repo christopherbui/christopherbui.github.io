@@ -1,0 +1,112 @@
+/* General Styles */
+body {
+    font-family: 'Source Serif 4', Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #f8f9fa;
+    transition: background-color 0.5s ease;
+}
+
+/* Home Section */
+#home {
+    background-color: #f8f9fa;
+    padding-top: 0px; /* Remove top padding to bring the section closer to the top */
+    padding-bottom: 20px;
+    margin-top: -180px; /* Negative margin to raise the section */
+}
+
+/* Profile Image */
+.profile-image {
+    width: 150px; /* Adjust the width to make it smaller */
+    height: 150px; /* Adjust the height to match the width */
+    border: 3px solid #46484b;
+    border-radius: 50%; /* Keep the image circular */
+    object-fit: cover; /* Ensure the image fills the container without stretching */
+    margin-bottom: 20px; /* Space between image and text */
+}
+
+
+/* Profile Image and Description Section */
+.col-md-6.d-flex.flex-column.align-items-center.justify-content-center {
+    text-align: center; /* Center the text */
+    margin-left: 0; /* Remove negative margins */
+    padding-top: 0;
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 768px) {
+    .profile-image {
+        width: 100px; /* Smaller size for narrow screens */
+        height: 100px; /* Keep height equal to width */
+    }
+}
+
+
+/* Profile Description (Text Alignment) */
+#description {
+    min-height: 150px; /* Reserve space for the description to prevent layout shifting */
+    overflow: hidden;  /* Prevent any overflow from causing layout issues */
+    text-align: left;   /* Aligns the text itself to the left */
+    width: 100%;       /* Ensures the text takes full width of the container */
+    max-width: 600px;  /* Optionally limit the width for better readability */
+    margin: 0 auto;    /* Center the text block itself within the container */
+}
+
+/* Fix for smaller screens */
+@media (max-width: 768px) {
+    .col-md-6.d-flex.flex-column.justify-content-center {
+        margin-left: 0; /* Reset margin for smaller screens */
+        padding-left: 10px; /* Adjust padding for smaller screens */
+    }
+
+    /* Profile Image adjustment for smaller screens */
+    .profile-image {
+        max-width: 150px; /* Smaller image size for mobile */
+        margin-right: 0; /* Reset margin for smaller screens */
+    }
+}
+
+/* Projects Section */
+#projects {
+    background-color: #f8f9fa;
+    padding-top: 20px;
+    margin-top: 0px; /* Ensure no negative margin here */
+}
+
+.project-card {
+    flex: 0 0 30%; /* Keep thumbnails wider */
+    max-width: 30%;
+    margin: 0 15px 30px 15px; /* Consistent spacing */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .project-card {
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 576px) {
+    .project-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Footer Styles */
+footer {
+    background-color: #f8f9fa; /* Match the background color */
+    font-size: 0.85rem; /* Small font size */
+    color: #6c757d; /* Subtle text color */
+    padding: 10px 0; /* Add some padding */
+}
+
