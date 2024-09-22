@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="projects.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link current-page" href="projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../blog/blog.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pdf/resume.pdf">Resume</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">Projects</h2>
+      <div class="row">
+        <!-- Project 1 -->
+        <div class="col-12 project-item">
+            <a href="../blog/entries/cell_segmentation.html">
+                <img src="../img/project-thumbnails/cell_segmentation.png" alt="Project 1 Thumbnail">
+            </a>
+            <div class="project-description">
+                <h5 class="card-title">
+                    <a href="../blog/entries/cell_segmentation.html">Cellular Nucleus Image Segmentation</a>
+                </h5>
+                <p class="card-text">Uses a convolutional neural network architecture to perform semantic image segmentation of cells in microscope images. Addresses a major inconvenience of cell counting in biological laboratories.</p>
+            </div>
+        </div>        
+
+        <!-- Project 2 -->
+        <div class="col-12 project-item">
+          <img src="project2-thumbnail.jpg" alt="Project 2 Thumbnail">
+          <div class="project-description">
+            <h5 class="card-title">Project Title 2</h5>
+            <p class="card-text">This is a brief description of project 2. It highlights the core features and purpose of the project.</p>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="col-12 project-item">
+          <img src="project3-thumbnail.jpg" alt="Project 3 Thumbnail">
+          <div class="project-description">
+            <h5 class="card-title">Project Title 3</h5>
+            <p class="card-text">This is a brief description of project 3. It highlights the core features and purpose of the project.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

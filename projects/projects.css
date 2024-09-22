@@ -1,0 +1,71 @@
+/* Ensure the main content stretches to push the footer down */
+body > * {
+    flex-grow: 1;
+}
+
+/* Project Cards */
+.project-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    margin: 12px 0;  /* Adds space both above and below the project cards */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;  /* Center the project items */
+    border-radius: 24px;
+    border: 2px solid black;
+    transition: background-color 0.3s ease;  /* Smooth transition for hover effect */
+}
+
+/* Highlight effect on hover */
+.project-item:hover {
+    border-color: #007bff;  /* Transparent blue background on hover */
+}
+
+.project-item img {
+    width: 110px;  /* Thumbnail size */
+    height: 110px;  /* Thumbnail size */
+    border-radius: 10px;  /* Rounded square */
+    margin-right: 20px;  /* Space between image and description */
+    object-fit: cover;  /* Ensure the image doesn't stretch */
+}
+
+/* Remove underline and color from project title links */
+.project-description a {
+    text-decoration: none;  /* Remove underline */
+    color: inherit;  /* Inherit the color of the parent element (same as other titles) */
+}
+
+/* Optional: Add hover effect for the title links */
+.project-description a:hover {
+    text-decoration: none;
+    color: #007bff;
+}
+
+/* Center project title and description */
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+.project-item .project-description {
+    flex-grow: 1;  /* Ensure the description takes up remaining space */
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+    .project-item {
+        flex-direction: column; /* Stack vertically on smaller screens */
+        text-align: center;  /* Center the content on smaller screens */
+    }
+
+    .project-item img {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
