@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
+    <title>Contact Me</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="contact.css">
     <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="blog.css">
 </head>
 <body>
-
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -25,46 +24,38 @@
                         <a class="nav-link" href="../projects/projects.html">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active current-page" href="blog.html">Blog</a>
+                        <a class="nav-link" href="../blog/blog.html">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../pdf/resume.pdf">Resume</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../contact/contact.html">Contact</a>
+                        <a class="nav-link current-page" href="contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Blog Section -->
-    <section id="blog" class="py-5">
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
         <div class="container">
-            <h2 class="mb-5">Blog</h2>
             <div class="row">
-                <!-- Blog Item 1 -->
-                <div class="col-12 blog-item mb-4">
-                    <a href="entries/cell_segmentation.html">
-                        <img src="../img/project-thumbnails/cell_segmentation.png" alt="Blog 1 Thumbnail" class="blog-thumbnail">
-                        <h5 class="card-title">Cellular Nucleus Image Segmentation</h5>
-                    </a>
+                <!-- Left Column -->
+                <div class="col-md-6">
+                    <div class="contact-text">
+                    <h2>Keep In Touch! 🙂</h2>
+                    <p>Please feel free to contact me with any questions or if you simply want to chat about any topic!</p>
+                    </div>
                 </div>
-
-                <!-- Blog Item 2 -->
-                <div class="col-12 blog-item mb-4">
-                    <a href="another_blog.html">
-                        <img src="blog2-thumbnail.jpg" alt="Blog 2 Thumbnail" class="blog-thumbnail">
-                        <h5 class="card-title">Blog Title 2</h5>
-                    </a>
-                </div>
-
-                <!-- Blog Item 3 -->
-                <div class="col-12 blog-item mb-4">
-                    <a href="third_blog.html">
-                        <img src="blog3-thumbnail.jpg" alt="Blog 3 Thumbnail" class="blog-thumbnail">
-                        <h5 class="card-title">Blog Title 3</h5>
-                    </a>
+                <!-- Right Column -->
+                <div class="col-md-6">
+                    <ul>
+                        <li>cbui3@pm.me</li>
+                        <li><a href="https://www.linkedin.com/in/cbui3/">LinkedIn</a></li>
+                        <li><a href="https://github.com/christopherbui/ml-projects">GitHub</a></li>
+                        <!-- Add any other contact information here -->
+                    </ul>
                 </div>
             </div>
         </div>
@@ -73,7 +64,7 @@
     <!-- Footer -->
     <footer class="text-center py-3">
         <p>© 2024 Christopher Bui. All rights reserved.</p>
-    </footer>  
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

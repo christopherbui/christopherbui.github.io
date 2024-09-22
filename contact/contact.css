@@ -1,0 +1,35 @@
+/* Limit the width of the contact text and center it */
+.contact-text {
+    max-width: 300px; /* Adjust this value to reduce width */
+    margin: 0 auto; /* Center the text within the column */
+    text-align: left; /* Ensure the text stays left-aligned */
+}
+
+/* Optional: Media query to adjust text width on smaller screens */
+@media (max-width: 768px) {
+    .contact-text {
+        max-width: 100%; /* Allow full width on smaller screens */
+    }
+}
+
+a {
+    color: #22252a;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #007bff;
+}
+
+.contact-text {
+    font-weight: 300;
+}
+
+.col-md-6 {
+    font-weight: 300;
+}
+
+/* Lower the text and contact list using margin */
+.container {
+    margin-top: 50px; /* Adjust this value to control how far down the content moves */
+}

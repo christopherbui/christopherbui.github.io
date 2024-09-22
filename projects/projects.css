@@ -3,6 +3,40 @@ body > * {
     flex-grow: 1;
 }
 
+/* Align Projects Heading with Project Items */
+#projects h2 {
+    text-align: left;
+    max-width: 800px;  /* Same max width as the project items */
+    margin: 0 auto 30px auto;  /* Center the heading and add spacing below */
+    padding-left: 15px;  /* Optional: Add padding for more consistent alignment */
+    padding-right: 15px;
+}
+
+/* Project Card Styling */
+.project-item .card {
+    border: 2px solid black;
+    border-radius: 10px;
+    transition: border-color 0.3s ease;
+    max-width: 800px; /* Set a smaller max-width for larger screens */
+    margin: 0 auto; /* Center the card horizontally */
+    height: 200px; /* Set a smaller height for larger screens */
+    overflow: hidden; /* Hide overflow if content exceeds the card height */
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    #projects h2 {
+        max-width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .project-item .card {
+        max-width: 100%;  /* Make the card take full width on small screens */
+        height: auto;  /* Allow the height to adjust to content on small screens */
+    }
+}
+
 /* Project Cards */
 .project-item {
     display: flex;
@@ -26,7 +60,7 @@ body > * {
 .project-item img {
     width: 110px;  /* Thumbnail size */
     height: 110px;  /* Thumbnail size */
-    border-radius: 10px;  /* Rounded square */
+    border-radius: 24px;  /* Rounded square */
     margin-right: 20px;  /* Space between image and description */
     object-fit: cover;  /* Ensure the image doesn't stretch */
 }
@@ -45,12 +79,24 @@ body > * {
 
 /* Center project title and description */
 .card-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
+    margin-bottom: 6px;
 }
 
 .card-text {
-    font-size: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive Styling for Smaller Screens */
+@media (max-width: 768px) {
+    .card-title {
+        font-size: 1.2rem;  /* Smaller font size for mobile */
+    }
+
+    .card-text {
+        font-size: 0.9rem;  /* Smaller font size for mobile */
+    }
 }
 
 .project-item .project-description {
