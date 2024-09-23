@@ -5,10 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Typing animation for the description
-    const text = "I am a data scientist with a background in Bioinformatics, Machine Learning, and healthcare analytics. I have experience optimizing large scale data pipelines and developing predictive models. I am constantly open to learning and am driven to apply my analytical and interpersonal skillset to discover innovative solutions for highly-impactful challenges.";
     const typingSpeed = 7; // Adjust the typing speed (milliseconds between each character)
     let i = 0;
-    const descriptionElement = document.getElementById('description');
+    const descriptionElement = document.getElementById('description-text');
 
     function typeWriter() {
         if (i < text.length) {
