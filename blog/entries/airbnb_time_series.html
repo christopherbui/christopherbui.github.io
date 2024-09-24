@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb Time Series Forecasting | Christopher Bui</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">  <!-- Consistent navbar styles -->
+    <link rel="stylesheet" href="entry_styles.css">  <!-- Page-specific styles -->
+    <link rel="icon" href="../../img/c.png" type="image/svg+xml">    
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="../../index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../projects/projects.html">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link current-page" href="../../blog/blog.html">Blog</a> <!-- Underline this entry -->
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../pdf/resume.pdf">Resume</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../contact/contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Airbnb Time Series Forecasting</h1>
+
+        <p>The goal of this project is to predict the number of future Airbnb registrations at a given point in time.</p>
+
+        <p>Here is the project <a href="https://github.com/christopherbui/ml-projects/blob/main/airbnb_time_series/tseries_modeling.ipynb" target="_blank">code</a>.</p>
+
+        <h2>Data</h2>
+
+        <p>The data is a single csv file such that each observation is a unique Airbnb housing registration for a certain point in time indicated by its "listing id" and the specific date that the listing id was booked. For this project, I limited the scope of the Airbnb listings to the city of Los Angeles from the years 2009 - 2019.</p>
+
+        <h2>Tools</h2>
+
+        <p>Data table manipulation was performed with the standard Pandas and Numpy libraries. Graphing the time series data was done in Matplotlib. The Statsmodels library was utilized for ARIMA modeling.</p>
+
+        <h2>Model</h2>
+
+        <p>The original time series data is non-stationary, with an obvious upward trend and seasonal characteristics apparent near the last quarter of every year. Hence, a series of transformations, rolling averages, and decompositions were necessary to make the data stationary. ACF and PACF plots were used to help determine the number of auto-regressive lag terms (p) and moving average terms (q). Differencing degree of 1 showed improvement to stationarity. The model was fitted based on the AIC loss.</p>
+
+        <h2>Conclusion</h2>
+
+        <p>In the end, a log transformation of the original data with the parameters ARIMA(1, 1, 1) showed an adequate. Different choices can be made for data transformations, ARIMA parameters, and an alternative choice of loss (BIC) in attempts to improve the model. This can be done with a grid search given the time, and will be left for future work.</p>
+
+        <h2>Useful Resources</h2>
+
+        <p>
+            <ul>
+                <li><a href="https://people.duke.edu/~rnau/411arim.htm" target="_blank">https://people.duke.edu/~rnau/411arim.htm</a></li>
+                <li><a href="https://www.datascience.com/blog/introduction-to-forecasting-with-arima-in-r-learn-data-science-tutorials" target="_blank">https://www.datascience.com/blog/introduction-to-forecasting-with-arima-in-r-learn-data-science-tutorials</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Box%E2%80%93Jenkins_method" target="_blank">https://en.wikipedia.org/wiki/Box%E2%80%93Jenkins_method</a></li>
+                <li><a href="https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/" target="_blank">https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/</a></li>
+                <li><a href="https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/" target="_blank">https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/</a></li>
+            </ul>
+            
+        </p>
+    </div>

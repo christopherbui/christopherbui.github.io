@@ -40,7 +40,7 @@
     <div class="container">
         <h1>Cellular Nucleus Image Segmentation Project</h1>
 
-        <p>The <a href="https://www.kaggle.com/c/data-science-bowl-2018">2018 Data Science Bowl</a> Kaggle competition caught my attention for its potential to have a profoundly practical impact in the biotechnology industry. This post covers my overall experience while a detailed summary of my work can be found on my <a href="https://github.com/ChristopherBui3/Metis_Projects/tree/master/Project_5">Github</a>.</p>
+        <p>The <a href="https://www.kaggle.com/c/data-science-bowl-2018" target="_blank">2018 Data Science Bowl</a> Kaggle competition caught my attention for its potential to have a profoundly practical impact in the biotechnology industry. This post covers my overall experience while a detailed summary of my work can be found on my <a href="https://github.com/ChristopherBui3/Metis_Projects/tree/master/Project_5">Github</a>.</p>
 
         <h2>The Challenge</h2>
 
@@ -58,7 +58,7 @@
 
         <p>The goal of this challenge is to establish a foundation for the ability to quantify a facet of a biological system. Specifically, by having a model that can segment out nuclei among the messiness in a microscope image, one can apply currently available software to count the number of detected nuclei. Knowing the number of nuclei in a biological sample allows scientists to quantify their observations rather than “eye-balling” them. For example, in the realm of drug discovery research, after applying a test drug to a batch of cells, this model would be able to report whether the cell count increased or decreased in response to the drug. Furthermore, traditional software methods that perform this same task are limited in their abilities and can take days to a week to accomplish. By decreasing the time of this task, I can only imagine costs for related research to decrease and the opportunities of discovering a beneficial drug to come sooner.</p>
         
-        <p>This <a href="https://www.youtube.com/watch?v=Dbiq6l50zO8">video</a> from the challenge's organizer expands on the motivation.</p>
+        <p>This <a href="https://www.youtube.com/watch?v=Dbiq6l50zO8" target="_blank">video</a> from the challenge's organizer expands on the motivation.</p>
 
         <h2>Model</h2>
 
@@ -84,7 +84,7 @@
 
         <h2>Results</h2>
 
-        <p>Here is the <a href="https://github.com/christopherbui/Metis_Projects/blob/master/Project_5/code/model.py">U-Net architecture Python code.</a> After training the model, I test it on the 70 images from the test set. For each test image, the model returns a predicted binary image. We evaluate the performance of the model by overlaying the original image’s binary mask over the predicted result. From this, we see regions where the model predicted correctly and incorrectly.</p>
+        <p>Here is the <a href="https://github.com/christopherbui/Metis_Projects/blob/master/Project_5/code/model.py" target="_blank">U-Net architecture Python code.</a> After training the model, I test it on the 70 images from the test set. For each test image, the model returns a predicted binary image. We evaluate the performance of the model by overlaying the original image’s binary mask over the predicted result. From this, we see regions where the model predicted correctly and incorrectly.</p>
 
         <p>
             <div class="image-container">
@@ -93,10 +93,12 @@
         </p>
 
         <p>
+          <ul>
             <li> Yellow: True Positive</li>
             <li> Black: True Negative</li>
             <li> Green: False Positive (Error)</li>
             <li> Red: False Negative (Error)</li>
+          </ul>
         </p>
 
         <p>To quantify the model’s performance, I used the Jaccard Distance (a.k.a. Intersection Over Union) metric. This Jaccard Distance value is calculated by taking the area of regions where nuclei was predicted correctly (true positives), and dividing that value by the sum of the false negative, false positive, and true positive areas.</p>

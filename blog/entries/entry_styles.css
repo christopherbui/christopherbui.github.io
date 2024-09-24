@@ -29,6 +29,7 @@ h2 {
     font-size: 24px;
 }
 
+
 .container {
     max-width: 900px;  /* Set a maximum width for readability */
     margin: 0 auto;
@@ -57,13 +58,4 @@ h2 {
     }
 }
 
-/* Footer Styling Consistency */
-footer {
-    font-family: "Inter";
-    font-weight: 400;
-    background-color: #f8f9fa;
-    font-size: 0.85rem;
-    color: #6c757d;
-    padding: 10px 0;
-    text-align: center;
-}
+

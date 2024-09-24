@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lymphoma Microarray Cancer Clustering Analysis | Christopher Bui</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">  <!-- Consistent navbar styles -->
+    <link rel="stylesheet" href="entry_styles.css">  <!-- Page-specific styles -->
+    <link rel="icon" href="../../img/c.png" type="image/svg+xml">    
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="../../index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../projects/projects.html">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link current-page" href="../../blog/blog.html">Blog</a> <!-- Underline this entry -->
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../pdf/resume.pdf">Resume</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../contact/contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav> 
+    <div class="container">
+        <h1>Lymphoma Microarray Cancer Clustering Analysis</h1>
+
+        <p>With the ever-growing capabilities of computational hardware along with advancing machine learning (ML) principles, the biomedical sector is seeing increased ML applications on genomic data that allows researchers to gain better insight at a more convenient pace than traditional methods.</p>
+
+        <p>The objective of this post is to demonstrate the application of microarray analysis on a lymphoma dataset. Specifically, Principle Component Analysis is applied on the high dimensional genetic dataset, followed by a simple implementation of K-Means Clustering. The end result is a binary classification of Non-Hodgkin’s Lymphoma samples as either follicular or diffuse</p>
+
+        <p>The project's code is provided <a href="https://github.com/christopherbui/ml-projects/blob/main/cancer_microarray_analysis/CancerMicroarray_KMeansClustering.ipynb">here</a></p>
+
+        <h2>Background</h2>
+
+        <p>The lymphatic system is the part of the body’s immune system, consisting of various organs including the lymph nodes, spleen, and thymus gland. <strong>Lymphocytes</strong> are a type of white blood cells whose purpose is to fight against diseases in the body. As such, <strong>Lymphoma</strong> is a cancer resulting from these lymphocytes acquiring mutative properties that eventually culminate within the aforementioned organs. Those infected experience fatigue and weightloss along with a heavily compromised immune system, increasing their susceptibility to other illnesses. The Non-Hodgkin’s Lymphoma variant has 2 general cell types: follicular and diffuse. Follicular lymphoma cells tend to be more clumped together and is more aggressive than the diffuse type.</p>
+
+        <p>Different genes are expressed in either a follicular or diffuse lymphoma cell, giving them their respective characteristics. A gene’s expression is correlated with the presence of its associated mRNA.</p>
+
+        <p>A <a href="https://www.nature.com/scitable/definition/microarray-202/">microarray</a> is a physical template where small DNA segments (probes) are placed. Lymphoma mRNA is converted to cDNA for complementary probe binding and tagged with fluorescent dye. Active genes in either a follicular or diffuse lymphoma sample will have its cDNA segments bind to the pretdetermiend probes on the microarray. Binding implies that certain genes are active and is indicated by an observable fluorescence. The strength of the fluorescence is also a factor in determining the strength of a gene’s expression.</p>
+
+        <p>Microarrays are useful as it allows us to determine what types of genes are active in certain cell samples which can help us classify the cell type. This classification part is what the machine learning model aims to accomplish.</p>
+
+        <h2>Dataset</h2>
+
+        <p>The <a href="https://ico2s.org/datasets/microarray.html">microarray dataset</a> used is from the Interdisciplinary Computing and Complex BioSystems <a href="https://ico2s.org/index.html">(ICOS) research group</a>. It is labeled <i>10-fold diffuse large B-cell lymphoma dataset</i>.</p>
+
+        <p>A slight tagent. One gripe I have with many machine learning articles is the implied nature or lack of adequate explaination of the dataset. As such, I will do my best here to give the reader the clearest understanding of the data.</p>
+
+        <p>The data collected from a microarray analysis is essentially represented as a tabular format, with rows and columns.</p>
+
+        <p>In this case, the features (columns) are the genetic probes in the microarray that bind to any available complementary segments of cDNA. The observations (rows) are individual lymphoma samples that underwent microarray analysis. In simpler terms, each row can represent a patient who submited their cell samples for testing.</p>
+
+        <p>Genomic data naturally contains an exorbitant number of features, causing a machine learning algorithm’s performance to suffer from the <a href="https://towardsdatascience.com/the-curse-of-dimensionality-50dc6e49aa1e">curse of dimensionality</a>. As a result, the original researchers applied Partial Least Squares feature selection to select the top 31 features that capture the most variance, or information, of the microarray data.</p>
+
+        <p>The dimensions of the dataset (rows x columns):</p>
+
+        <p><i>Raw Data</i>: 77 x 7129</p>
+
+        <p><i>PLS Feature Selection</i>: 77 x 31</p>
+
+        <p>Of the 77 samples, the class balance is:</p>
+
+        <p><i>diffuse</i>: 58</p>
+
+        <p><i>follicular</i>: 19</p>
+
+        <p>We’ll set aside 8 samples for the test set.</p>
+
+        <h2>Data Preprocessing</h2>
+
+        <p>We could perform analysis on the 31 features, but spatial visualization would not be possible. To accomplish this, we’ll perform PCA using 2 components to compress the data onto 2D space that captures the most variance. PCA with 3 components is also shown, but clustering will be performed using 2 PC. Normalization of the data is included in this process.</p>
+
+        <p><i>PCA Applied:</i> 77 x 2</p>
+
+        <p>
+            <div class="image-container">
+                <img src="https://miro.medium.com/v2/resize:fit:800/format:webp/1*qqyFq85ClOa9t3J0tfd_VQ.png" alt="Dataset 2 Principal Components">
+                <img src="https://miro.medium.com/v2/resize:fit:806/format:webp/1*JL1tLRrZ77vA-7Y2A4LgVg.png" alt="Dataset 3 Principal Components">
+            </div>
+        </p>
+
+        <p>Outliers are present in this dataset, specifically 2 in the diffuse class. Calculating the ground truth centroids using the provided class labels, we removed several outliers using <a href="https://www.sciencedirect.com/science/article/abs/pii/S0022103113000668">absolute deviation around the median</a> to optimize our semi-supervised K-Means model training. In a pure unsupervised K-Means, outlier removal is only possible after training. The centroids are in dark pink and blue. The outliers are the black-border blue.</p>
+
+        <p>
+            <div class="image-container">
+                <img src="https://miro.medium.com/v2/resize:fit:804/format:webp/1*0IADzlAgEbOZivqWwstvRw.png" alt="Outliers">
+            </div>
+        </p>
+
+        <h2>K-Means Model</h2>
+
+        <p>Here is the python <a href="https://github.com/christopherbui/ml-projects/blob/main/cancer_microarray_analysis/CancerMicroarray_KMeansClustering.ipynb" target="_blank">code.</a></p>
+
+        <p>Since the labels are provided, we know that K = 2 clusters. In a pure unsupervised K-Means, labels are unknown and K is determined using an <a href="https://www.analyticsvidhya.com/blog/2021/01/in-depth-intuition-of-k-means-clustering-algorithm-in-machine-learning/" target="_blank">elbow plot</a>.</p>
+
+        <p>We seek to minimize the euclidian distance between each point and its respective cluster between iterations of centroid updates.</p>
+
+        <p>
+            <div class="image-container">
+                <img src="https://miro.medium.com/v2/resize:fit:1104/format:webp/1*riInbzp5CiuMOOq8rldQ7w.png" alt="minimize loss function">
+            </div>
+        </p>
+
+        <p>The process is as follows:</p>
+
+        <p>
+            <ol>
+                <li>Initialize 2 random centroids in 2 PC space</li>
+                <li>Assign points to closest centroid</li>
+                <li>Update centroids by finding average of points in each cluster</li>
+                <li>Repeat steps 2–3</li>
+            </ol>
+        </p>
+
+        <p>The final centroids may not be optimal due to the random initialization, and given that the loss is not concave with a global minimum. Multiple iterations may be required to observe a suitable average of final centroid values.</p>
+
+        <p>This semi-supervised K-means implementation is possible with the provided class labels, which allows us to calculate the accuracy of model.</p>
+
+        <p>Below, we observe the trained model:</p>
+
+        <p>
+            <div class="image-container">
+                <img src="https://miro.medium.com/v2/resize:fit:804/format:webp/1*j22i56R8Wb1gLWVD6aVJ2w.png" alt="K-means Model, No Outiers">
+            </div>
+        </p>
+
+        <h2>Discussion</h2>
+
+        <p>The centroids are are positioned such that they more or less encompass each half of the general area covered by the data points. This is because the “density” of the points are close to uniform. We can see that the centroids are slightly shifted below the horizontal half of the data because the density of points there is higher.</p>
+
+        <p>Comparing the above image to the first, we can see that the model fails to correctly classify the upper left points. K-Means is highly sensitive to the training data, and as such, removing outliers is necessary.</p>
+
+        <p><i>Training Acc:</i> 79.10%</p>
+
+        <p><i>Test Acc:</i> 50.00%</p>
+
+        <p>Due to the nature of the training data K-Means may not be the best performer here.</p>
+
+        <p>From the naked, eye, we can better classify these points by drawing a single line from 0.5 on the y-asix to 1 on the x-axis of the images shown. This could be performed by <a href="https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47" target="_blank">SVM</a>. From testing this, we got:</p>
+
+        <p><i>Training Acc:</i> 95.52%</p>
+
+        <p><i>Test Acc:</i> 87.50%</p>
+
+        <p>Here we have shown the application of a semi-supervised K-Means on a genomic dataset after applying dimensionality reduction techniques. We were able to examine the model’s training performance given the original researchers had provided the label annotations. With the emergence of machine learning in the biosciences, we can apply such techniques to expedite research efforts.</p>
+
+    </div>
+    
+    <!-- Footer -->
+    <footer class="text-center py-3">
+      <small>© 2024 Christopher Bui. All rights reserved.</small>
+    </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>    
+</body>
+</html>

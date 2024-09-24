@@ -169,3 +169,7 @@ body {
 html {
     overflow-y: scroll;  /* Always show vertical scrollbar to prevent content shift */
 }
+
+strong {
+    font-weight: 600;
+}
