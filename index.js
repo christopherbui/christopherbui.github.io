@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Typing animation for the description
-    const typingSpeed = 7; // Adjust the typing speed (milliseconds between each character)
+    const typingSpeed = 9.5; // Adjust the typing speed (milliseconds between each character)
     let i = 0;
     const descriptionElement = document.getElementById('description-text');
 
