@@ -15,7 +15,7 @@ body {
     margin-top: 50px;
 }
 
-h1, h2 {
+h1, h2, h3 {
     font-family: "Source Serif 4", serif;
     font-weight: 400;  /* Use a lighter weight for headings */
     color: #000000;
@@ -26,7 +26,11 @@ h1 {
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 22px;
 }
 
 
@@ -58,4 +62,12 @@ h2 {
     }
 }
 
+.code-block {
+    border: 1px solid #ccc; /* Border around the code block */
+    padding: 2px;          /* Add some padding inside the block */
+    border-radius: 5px;      /* Optional: Rounded corners */
+    background-color: #f9f9f9; /* Optional: Background color */
+    overflow-x: auto;        /* Enable horizontal scrolling if the code is too wide */
+    font-family: monospace;  /* Ensure monospace font for code */
+}
 

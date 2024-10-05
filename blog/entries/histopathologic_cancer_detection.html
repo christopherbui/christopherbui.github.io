@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histopathologic Cancer Detection Project | Christopher Bui</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">  <!-- Consistent navbar styles -->
+    <link rel="stylesheet" href="entry_styles.css">  <!-- Page-specific styles -->
+    <link rel="icon" href="../../img/c.png" type="image/svg+xml">    
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="../../index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../projects/projects.html">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link current-page" href="../../blog/blog.html">Blog</a> <!-- Underline this entry -->
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../pdf/resume.pdf">Resume</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../contact/contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Histopathologic Cancer Detection</h1>
+
+        <p>Relating to giving appropriate medical diagnosis, medical professionals are tasked with determining the validity and presence of any indicators that singal a disease. However, even among the best professionals, there is the possibility of human error. With image segmentation and classifier models becoming increasingly advanced through the years, the potential for them to aid in medical diagnosis by picking up potential misses by doctors appears more realistic.</p>
+
+        <p>utilizng the popular deep learning PyTorch library to classify microscope tissue images as either containing cancer or not. In addition to my own model, I'll show how the use of <strong>transfer learning</strong> can expedite model training and performance.</p>
+
+        <h2>Code</h2>
+
+        <p>The <a href="https://github.com/christopherbui/machine-learning-projects/blob/main/histopathologic-cancer-detection/cancer_detection.ipynb" target="_blank">code</a> is presented and documented in a jupyter notebook that provides step-by-step explainations.</p>
+
+        <h2>Data</h2>
+
+        <p>The <a href="https://www.kaggle.com/c/histopathologic-cancer-detection/data" target="_blank">dataset</a> is available on Kaggle, and consists of 277,483 unique tissue images of lymph node cross sections. Imagse belong to one of two classes: no cancer, or cancer. Upon inspection, the dataset appears moderately balanced.</p>
+
+        <p>
+            <div class="image-container">
+                <img src="../../img/project-images/histopathologic-cancer-detection/data_balance.png" alt="data balance">
+            </div>
+        </p>
+
+        <p>Below are a few randomly sampled images:</p>
+
+        <p>
+            <div class="image-container">
+                <img src="../../img/project-images/histopathologic-cancer-detection/sample_train_images.png" alt="sample train images">
+            </div>
+        </p>
+
+        <h3>Preprocessing</h3>
+
+        <p>It is standard practice for supervised image-based tasks in machine learning to organize the images into a standard directory structure.</p>
+
+        <p>
+            <div class="image-container">
+                <img src="../../img/project-images/histopathologic-cancer-detection/file_structure.png" width="300" height="200">
+            </div>
+        </p>
+        
+        <p>The reason for this is because when we call <i>torch.utils.data.Dataloader</i> on these images, the data loader will understand how to partitiion the data into batches for training.</p>
+
+        <p>To simplify and speed up training, 20,000 random images were sampled from the available 200,000, with stratification. This means that the class proportion shown above is preserved within these 20,000 samples.</p>
+
+        <p>Even when partitioning data randomly, it's best to be aware of the potential of bad sampling. For example, in the case that stratification was not employed, it is possible that we could have sampled a highly unbalanced proportion of images with the cancer label. This would lead to unnecessary complexity in model training.</p>
+
+        <p>If you have stronger hardware and resources, feel free to adjust the total number of samples for your model training. A <i>test_size=0.3</i> was used. Label 0 coincides with no cancer, whereas lable 1 represents having cancer. After sampling with stratification and splitting the data into train and test sets, the results in the following:</p>
+
+        <p>Train Samples: 14,000</p>
+
+        <ul>
+            <li>label 0: 8,400</li>
+            <li>label 1: 5,600</li>
+        </ul>
+
+        <p>Test Samples: 6,000</p>
+
+        <ul>
+            <li>label 0: 3,600</li>
+            <li>label 1: 2,400</li>
+        </ul>
+
+        <h2>Hardware</h2>
+
+        <p>Training was performed on the CUDA platform from an RTX 3050 with 4 GB of VRAM.</p>
+
+        <h2>Modeling</h2>
+
+        <p>Both the simple and transfer learning model are based on utilizing a <strong>convolutional neural network (CNN)</strong> architecture. For my simple model, I implemented 2 convolutional blocks followed by a classifier layer. Each convolutional block consists of a sequential series of convolutions, pooling, and activation functions.</p>
+
+        <p>A concise explaination of CNNs can be found <a href="https://poloclub.github.io/cnn-explainer/">here</a>.</p>
+
+        <p>When I first started learning about CNNs, the biggest challenge for me was understanding where the number of parameters of a model came from, and how the output's dimensions were determiined given an input of a certain dimension.</p>
+
+        <p>I understood the basic convolving process of sliding the kernel window and calculating the dot product. But where I find most online explainations lacking is detailing how the parameters passed in for the CNN code translate to what is happening conceptually. With a firm understanding of what part of a CNN that the code refers to helped expand my understanding of CNNs and neural networks in general.</p>
+
+        <p>The basic function for applying a convolution on a 2D image is <i>nn.Conv2d()</i>. I'll briefly explain the basic parameters to help elucidate what they mean for anyone learning about CNNs.</p>
+
+        <p>Basic Parameters:</p>
+
+        <ul>
+            <li><i>in_channels</i>: the number of channels that the input into <i>nn.Conv2d()</i> has
+                <ul>
+                    <li><i>channels</i> refers to the layers of an input. In the instnace of an RGB image, it would have 3 channels, corresponding to the red, blue, green channel respectively. The shape of an image in tensor format can be represented in PyTorch as <strong>[channels, height, width]</strong>.</li>
+                    <li>Note that using matplotlib methods to display an image via <i>plt.imshow()</i> requires the channels to be the third dimension: <strong>[height, width, channels]</strong></i>. This can be accomplished using <i>torch.permute()</i></li>
+                </ul>
+            </li>
+
+            <li><i>out_channels</i>: the number of layers that the convolution output has
+                <ul>
+                    <li>This is up to the scientist's choosing. If we input an RGB image into a convolution and specify the following parameters: <i>nn.Conv2d(in_channels=3, out_channels=10)</i>, then the output will have dimensions <strong>[10, ? height, ? width]</strong>. The exact height and width are determined by the input's height and width along with the stride and kernel size used.</li>
+                </ul>
+            </li>
+
+            <li><i>kernel_size</i>: refers to the height and width of the kernel filter. Below, we have a kernel of size 2, which specifies a <i>2x2</i> kernel.</li>
+
+        </ul>
+
+        <p>
+            <div class="image-container">
+                <img src="../../img/project-images/histopathologic-cancer-detection/kernel.gif" alt="CNN kernel">
+            </div>
+        </p>
+
+        <p>A convolution calculation involves calculating the dot product between the overlaying kernel's values and the input's values. Then, we slide the kernel horizontally the number of pixels equal to the <i>stride</i> value. Then repeat the dot product. This continues until a new output <strong>(feature map)</strong> is created.</p>
+
+        <p>There is one kernel for each channel of the input. So an RGB image going through <i>nn.Conv2d</i> with <i>out_channels = 10</i> has <i>3 x 10 = 30</i> kernels. The 3 kernels for 1 of the output channels have their results added together in the resulting feature map. Each output channel has its own bias terms. So in this case, there are 10 bias terms added to the output of each kernel's convolution respectively.</p>
+
+        <h3>Simple Model</h3>
+
+        <p>For baseline performance assessment, I implemented a simple deep neural network with 2 convolutional blocks. Each block includes a series of convolution, activtation function, convolution, acivation function, and ends with pooling.</p>
+
+        <p>The output channels after each convolution block was set to 10. After the second block, the tensor elements are flattened and connected to a fully connected layer of 1 neuron. 1 neuron was chosen because we are doing binary classification.</p>
+
+        <h3>Transfer Learning Model</h3>
+
+        <p>Transfer learning allows to speed up training because we can import a model with pre-trained weights. In this case, <strong>ResNet50</strong> was chosen because it was trained on various images. What we change to make this model learn on our dataset is the fully connected layer. The steps are detailed below:</p>
+
+        <ol>
+            <li>load pre-trained model</li>
+            <li>freeze all pre-trained weights</li>
+            <li>replace the model's fully connected layer with our own.</li>
+        </ol>
+
+        <p>In our case of a binary classifier, we only need 1 neuron for our fully conencted layer, while maintaining the rest of the netowrk architecture.</p>
+
+        <p>During training, the weights between the flattened and our 1 neuron are what is being tuned to generalize on our dataset.</p>
+
+        <h2>Results</h2>
+
+        <h3>Simple Model</h3>
+
+        <p>
+            <div class="image-container">
+                <img src="../../img/project-images/histopathologic-cancer-detection/simple_results.png">
+            </div>
+        </p>
+
+        <p>Above we see that the baseline model performs relatively well from the start, better than a 50% accuracy by randomly guessing a sample's class. Training went for 30 epochs to observe the critical point of model overfitting. From the loss and accuracy plots, the training and testing loss diverge significantly around epoch 16. Thus future training can be early stopped here.</p>
+
+        <p>Another notable aspect of the plots are the spikes in decrease performance on the test set particularly in epoch 7, 12, 15. This could be due to encountering local minima in the loss function at these points when training on the training set. The model then adjusts in the next epoch, and we see test loss decrease close to the training loss as expected.</p>
+
+        <p>Furthermore, during data processing, transformations to the data include resizing to <i>64x64</i> and converting images to tensors for training. A seperate data transforming method includes augmentation such as horizontal flipping. Training was performed with and without this augmentation. The results displayed above are <strong>without</strong> augmentation for simplicity.</p>
+
+        <p>The loss and accuracy curves had a distictive feature such that train loss was always higher than test loss. Despite this, they both trended towards lower loss values over each epoch as the model better learned. Usually, we would expect the test loss to be higher than training loss because the model hasn't generalized to out of sample data in the early stages yet. However, I believe that the data augmentation transformation of horizontal flipping is one of the main reasons for observing a higher train loss throughout. That is because data augmentation introduces additional complexity that the model must learn, and makes it harder to generalize to such features. However, the test set is not augmented, and is simpler to predict on.</p>
+
+        <h3>Transfer Learning Model</h3>
+
+        <p>
+            <div class="image-container">
+                <img src="../../img/project-images/histopathologic-cancer-detection/transfer_learning_results.png">
+            </div>
+        </p>
+
+        <p>The loss curves from using the pre-trained resnet50 architecture shows that we are performing better than the simple model. The accuracy before overfitting in the simple model was around 82.5%, whereas the for the pre-trained model, we reach an optimal accuracy at the 7th epoch before overfitting at about 86%. Overall, we see that transfer learning allows for performance improvement, and in the case of a binary classification problem, we achieve results much better than 50% from randomly guessing.</p>
+
+        <h2>Conclusion</h2>
+
+        <p>Overall, we demonstrated how to build a neural network and implement methods to train and evaluate our models using PyTorch. In addition, we observe the benefits of utilizing transfer learning to speed up the training process and increase model performance.</p>
+
+        <p>Although an optimal 86% accuracy on the transfer learning model is nice for demonstration purposes, if the scaling of such models for serious real life medical applications in detecting cancer, then we would like this metric to be much closer to 100% correct as possible.</p>
+
+        <p>As models continue to improve, it's also important to understand that currently they are more of an aid, than a total replacement for medical professionals. Human error occurs, and these models can help mitigate this by allowing us to analyze the discrepencies between the human and model's predictions.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-3">
+        <p>© 2024 Christopher Bui. All rights reserved.</p>
+     </footer>
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
