@@ -21,8 +21,6 @@ body > * {
     margin: 0 auto; /* Center the card horizontally */
     height: 200px; /* Set a smaller height for larger screens */
     overflow: hidden; /* Hide overflow if content exceeds the card height */
-    word-wrap: break-word; /* Ensure long words break into the next line */
-    overflow-wrap: break-word; /* Ensure long words wrap properly */
 }
 
 /* Responsive Styling */
@@ -36,8 +34,6 @@ body > * {
     .project-item .card {
         max-width: 100%;  /* Make the card take full width on small screens */
         height: auto;  /* Allow the height to adjust to content on small screens */
-        margin-left: 10px; /* Add space between card and left edge */
-        margin-right: 10px; /* Add space between card and right edge */
     }
 }
 
@@ -49,7 +45,6 @@ body > * {
     background-color: #f8f9fa;
     margin: 12px 0;  /* Adds space both above and below the project cards */
     max-width: 800px;
-    height: 120px;
     margin-left: auto;
     margin-right: auto;  /* Center the project items */
     border-radius: 24px;
@@ -63,9 +58,9 @@ body > * {
 }
 
 .project-item img {
-    width: 80px;  /* Thumbnail size */
-    height: 80px;  /* Thumbnail size */
-    border-radius: 24px;  /* Rounded square */
+    width: 70px;  /* Thumbnail size */
+    height: 70px;  /* Thumbnail size */
+    border-radius: 18px;  /* Rounded square */
     margin-right: 20px;  /* Space between image and description */
     object-fit: cover;  /* Ensure the image doesn't stretch */
 }
@@ -87,63 +82,39 @@ body > * {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 6px;
-    word-wrap: break-word; /* Prevent long words from overflowing */
-    overflow-wrap: break-word; /* Ensure words wrap properly */
 }
 
 .card-text {
     font-size: 0.9rem;
-    word-wrap: break-word; /* Prevent long words from overflowing */
-    overflow-wrap: break-word; /* Ensure words wrap properly */
 }
 
 /* Responsive Styling for Smaller Screens */
 @media (max-width: 768px) {
     .card-title {
-        font-size: 1rem;  /* Smaller font size for mobile */
-        text-align: center; /* Center title on smaller screens */
+        font-size: 1.2rem;  /* Smaller font size for mobile */
     }
 
     .card-text {
-        font-size: 0.8rem;  /* Smaller font size for mobile */
-    }
-
-    /* Adjust the project-item layout for smaller screens */
-    .project-item {
-        flex-direction: column; /* Stack project items vertically */
-        text-align: center; /* Center the content on small screens */
-        padding: 15px; /* Reduce padding for smaller screens */
-    }
-
-    .project-item img {
-        width: 60px; /* Smaller thumbnail size for mobile */
-        height: 60px;
-        margin-bottom: 10px; /* Add margin to separate from text */
-    }
-
-    .project-item .card {
-        max-width: 90%; /* Reduce the card width to fit smaller screens */
-        margin: 0 auto; /* Center the card horizontally */
-        height: auto; /* Let height adjust based on content */
+        font-size: 0.9rem;  /* Smaller font size for mobile */
     }
 }
 
-/* Media Query for Extra Small Screens */
-@media (max-width: 576px) {
-    .card-title {
-        font-size: 0.9rem;  /* Even smaller font size for extra small screens */
-    }
+.project-item .project-description {
+    flex-grow: 1;  /* Ensure the description takes up remaining space */
+}
 
-    .card-text {
-        font-size: 0.75rem;  /* Even smaller font size */
-    }
-
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
     .project-item {
-        padding: 10px;  /* Further reduce padding for very small screens */
+        flex-direction: column; /* Stack vertically on smaller screens */
+        text-align: center;  /* Center the content on smaller screens */
+        padding-left: 30px;  /* Add padding to the left */
+        padding-right: 30px; /* Add padding to the right */
     }
 
     .project-item img {
-        width: 50px;  /* Smaller thumbnail size for very small screens */
-        height: 50px;
+        margin-right: 0;
+        margin-bottom: 15px;
     }
 }
+
