@@ -32,7 +32,7 @@ body > * {
     }
 
     .project-item .card {
-        max-width: 85%;  /* Make the card take full width on small screens */
+        max-width: 100%;  /* Make the card take full width on small screens */
         height: auto;  /* Allow the height to adjust to content on small screens */
     }
 }

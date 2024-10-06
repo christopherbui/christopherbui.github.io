@@ -53,9 +53,9 @@
 
 /* Thumbnail styling */
 .blog-thumbnail {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
+    width: 68px;
+    height: 68px;
+    border-radius: 18px;
     margin-right: 20px;
     object-fit: cover;
     background-color: #f8f9fa;
@@ -64,7 +64,7 @@
 /* Card title styling */
 .card-title {
     text-align: left;  /* Align title to the left */
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin: 0;
 }
 
