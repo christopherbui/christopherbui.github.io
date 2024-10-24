@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Generation Sequencing Analysis Pipeline In Python | Christopher Bui</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">  <!-- Consistent navbar styles -->
+    <link rel="stylesheet" href="entry_styles.css">  <!-- Page-specific styles -->
+    <link rel="icon" href="../../img/c.png" type="image/svg+xml">    
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="../../index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../projects/projects.html">Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link current-page" href="../../blog/blog.html">Blog</a> <!-- Underline this entry -->
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../pdf/resume.pdf">Resume</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../contact/contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Next Generation Sequencing Analysis Pipeline</h1>
+
+        <p>Here we demonstrate automating a traditional <strong>next generation sequencing (NGS)</strong> analysis pipeline using Python. The steps for NGS analysis are shown below.</p>
+
+        <table border="1" style="border-collapse: collapse; width: 100%; text-align: left; margin-bottom: 20px;">
+          <thead>
+              <tr>
+                  <th style="padding: 8px; background-color: #f2f2f2;">Step</th>
+                  <th style="padding: 8px; background-color: #f2f2f2;">Description</th>
+                  <th style="padding: 8px; background-color: #f2f2f2;">Tools</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td style="padding: 8px;">1. Download Data</td>
+                  <td style="padding: 8px;">Fetch raw sequencing data</td>
+                  <td style="padding: 8px;">SRA Toolkit, Python</td>
+              </tr>
+              <tr>
+                  <td style="padding: 8px;">2. Quality Control</td>
+                  <td style="padding: 8px;">Assess data quality</td>
+                  <td style="padding: 8px;">FastQC</td>
+              </tr>
+              <tr>
+                  <td style="padding: 8px;">3. Preprocessing</td>
+                  <td style="padding: 8px;">Trim adapters and filter low-quality reads</td>
+                  <td style="padding: 8px;">Trimmomatic, Cutadapt</td>
+              </tr>
+              <tr>
+                  <td style="padding: 8px;">4. Alignment</td>
+                  <td style="padding: 8px;">Align reads to a reference genome</td>
+                  <td style="padding: 8px;">BWA, Bowtie2</td>
+              </tr>
+              <tr>
+                  <td style="padding: 8px;">5. BAM Processing</td>
+                  <td style="padding: 8px;">Convert, sort, and index BAM files</td>
+                  <td style="padding: 8px;">Samtools</td>
+              </tr>
+              <tr>
+                  <td style="padding: 8px;">6. Variant Calling</td>
+                  <td style="padding: 8px;">Identify SNPs and indels</td>
+                  <td style="padding: 8px;">FreeBayes, GATK</td>
+              </tr>
+              <tr>
+                  <td style="padding: 8px;">7. Annotation</td>
+                  <td style="padding: 8px;">Add biological context to variants</td>
+                  <td style="padding: 8px;">ANNOVAR, SnpEff</td>
+              </tr>
+              <tr>
+                  <td style="padding: 8px;">8. Visualization</td>
+                  <td style="padding: 8px;">Visualize and generate reports</td>
+                  <td style="padding: 8px;">Pandas, Matplotlib</td>
+              </tr>
+          </tbody>
+      </table>
+
+      <h2>Data</h2>
+
+      <p>The <strong>Sequence Read Archive (SRA)</strong> is the largest publicly available respository of high throughout sequencing data.</p>
+      <p><strong>SRA Database</strong>: <a href="https://www.ncbi.nlm.nih.gov/sra" target="_blank">Here.</a></p>
+
+      <p>We'll use <strong>E. Coli</strong> as the genome of choice for its simplicity and low memory footprint for efficient demonstration.</p>
+
+      <p><strong>E. Coli Sequencing Run ID</strong>: SRR31041149</p>
+
+      <h2>Code</h2>
+
+      <p>The NGS analysis python <a href="https://github.com/christopherbui/bioinformatics-projects/blob/main/ngs-analysis/code/NGS_analysis_pipeline.ipynb" target="_blank">code</a> is presented in a Jupyter Notebok. This article explains the general principles, and the notebook demonstrates implementing the code at each step.</p>
+
+
+      <h2>Tools</h2>
+
+      <p>We'll be using some binaries for processing and filtering sequencing reads in FASTQ files.</p>
+
+      <p><strong>SRA Toolkit Download</strong>: <a href="https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit" target="_blank">Here.</a></p>
+
+      <h2>Background</h2>
+
+      <p>In NGS, the original genome or transcript is randomly fragmented into small pieces, and these pieces are sequenced. The sequence and its accompanying base quality score encompasses a single read, and multiple reads are in a single FASTQ file.</p>
+
+      <p><strong>Note</strong>: Reads do not represent contiguous segments of the original sequence, since they are randomly fragmented. </p>
+
+      <p>To mitigate gaps in sequence coverage, NGS workflows utilize high coverage and overlapping reads to recover missing information.</p>
+
+      <p>There are two types of accession numbers that one might see on NCBI's SRA database: <strong>SRR</strong> and <strong>SRX</strong>.</p>
+
+      <p><strong>SRR (SRA Run)</strong></p>
+
+      <ul>
+        <li>Example: SRR31041149 is the run accession.</li>
+        <li>It represents the sequencing data generated from a specific sequencing experiment. A single run corresponds to a single sequencing run, which could be a paired-end or single-end dataset.</li>
+        <li><strong>Paried-end reads</strong>: Sequencing approach where both ends of DNA/RNA fragment are sequenced, providing 2 complementary reads: one 5' to 3' <strong>(read 1)</strong> and the other 3' to 5' <strong>(read 2)</strong> direction.</li>
+          <ul>
+            <li>Tools use both reads to determine correct alignment of fragment to repetitive regions or complex genomes.</li>
+            <li>Helps detect insertions, deletions, inversions, or mutations by comparing discrepancies between reads.</li>
+            <li>For RNA-seq, helps detect alternative splicing events.</li>
+            <li>Reads are stored in 2 .fastq file.</li>
+          </ul>
+      </ul>
+
+      <p><strong>SRX (SRA Experiment)</strong></p>
+        <ul>
+          <li>Example: SRX040724</li>
+          <li>It represents the full experiment, which usually includes multiple runs (multiple SRR accessions).</li>
+        </ul>
+      
+      <h3>Interpreting FASTQ Files</h3>
+
+      <p>It is common to see file extensions such as FASTQ or FASTA. Both contain nucleotide sequences, but FASTQ contains quality score for each base in the same file.</p>
+
+      <p><strong>Quality score</strong> is represented by certain ASCII characters:</p>
+      <p>
+        <pre class="code-block"><code>`!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+        </code></pre>
+      </p>
+
+      <p>More on Bioinfomratics file formats:</p>
+      
+      <p>
+        <a href="https://bioinformaticsworkbook.org/introduction/fileFormats.html#gsc.tab=0" target="_blank">https://bioinformaticsworkbook.org/introduction/fileFormats.html#gsc.tab=0</a>
+      </p>
+
+      <p>
+        Traditionally, long sequences are split into multiple reads (each read is 4 lines) within the same file, with "+" or "@" used as seperators. This gets confusing to account for, more so in FASTQ with quality score ASCII characters.
+      </p>
+
+      <p>
+        Today, Illumina's software than can do high quality short-reads (~100 base pairs), so every 4 lines in a FASTQ file is a read with information for a 100 fragment of the larger sequence.
+      </p>
+
+      <p>Example for 1 read in FASTQ file:</p>
+      <p>
+        <pre class="code-block">
+          <code>
+  @HISEQ:402:H147CADXX:1:1101:1250:2208 1:N:0:CGATGT TGATGCTGCNAATTTTATTCAGTCAGCGGAGGGGGCTTACGTGTATTTTCTGCAACCTTT
+  +
+  CCCFFFFFH#4AFIJJJJJJJJIJJJJJJJJJJJJJJJJJJHHHHHHFFFFFFFEEEEED
+        </code></pre>
+      </p>
+
+      <h3>Adapter Contamination</h3>
+
+      <p><strong>Adapters</strong>: Short DNA sequences ligated to ends of DNA/RNA fragments during library preparation.</p>
+      <p>Adapters allow for fragments to bind to sequencing flow cell and serve as priming sites for sequencing.</p>
+      <ul>
+        <li>Sequence flow cell preparation -> Library Preparation Process (bind adapters) -> sequencing -> analysis</li>
+        <li>The fragments of Adapters that have ligated to sequence undergo PCR amplification to create enough material for sequencing.</li>
+      </ul>
+
+      <p>
+        Adapter contamination occurs when adapater sequences are not removed during the sequencing reads. This causes adapter sequences to appear in the raw data and affects analysis including alignment, assembly, and variant calling.
+      </p>
+
+      <p><strong>Causes</strong>:</p>
+      <ol>
+        <li>
+          <strong>hort DNA Fragments</strong>: If fragment (i.e. 50bp) is shorter than read length (i.e. 100bp), then sequencer will read into the adapter sequence.
+        </li>
+        <li>
+          <strong>Incomplete Trimming</strong>: Adapter trimming software may miss some adapter sequences, leaving them in the FASTQ reads.
+        </li>
+        <li>
+          <p>
+            <strong>Over-amplification in PCR</strong>: If PCR runs for too many cycles, the adapter-ligand sequences are replicated too many times in sequence, causing multiple adapter copies in single read.
+          </p>
+          <ul>
+            <li>
+              Need to apply correct number of PCR cycles (8-12)
+            </li>
+            <li>
+              If over-amplifiication as occurred in reads, use software like `Trimmomatic` or `Cutadapt` to remove them.
+            </li>
+          </ul>
+        </li>
+      </ol>
+
+      <h2>Pipeline</h2>
+
+      <p>During the <i>Quality Control</i> step using <i>FastQC</i>, we need to convert the downloaded .sra file to a .fastq format. Use <i>fastq-dump</i> from SRA Toolkit for this task.</p>
+
+      <p>For paired-end reads, the output above will yield 2 .fastq files. One file corresponds to the forward read, and the other to the reverse read.</p>
+
+      <p>A report of quality statistics are presented within the output HTML files for each pair-end read.</p>
+
+      <p>
+        <strong>Interpreting the HTML Report</strong>
+        <ol>
+          <li>
+            <strong>Per Base Sequence Quality</strong>: Shows box and whisker plot of quality score for each base
+          </li>
+          <li>
+            <strong>GC Content</strong>: Verify if it matches expectations (i.e. ~50% if using an E. coli SRR accession)
+          </li>
+          <li>
+            <strong>Adapter Content</strong>: Alerts of adapter presence; Will trim them in the Trimming and Filtering step
+          </li>
+          <li>
+            <strong>Sequence Duplication</strong>: High levels of duplication might indicate PCR bias
+          </li>
+        </ol>
+      </p>
+
+      <p>
+        After generating the HTML report with <i>fastqc</i> and if adapter contamination is present, we can apply the <i>trimmomatic</i> from the SRA Toolkit to remove adapters or low-qality bases at the sequence ends.
+      </p>
+
+      <p>
+        For alignment step: We'll use the provided E. Coli sequence as the reference genome.
+      </p>
+
+      <p>Then, We need to index the reference genome so that the alignment software can perform alignment with the trimmed, paired reads faster. If not, then it would have to linearly scan entire reference genome for every read.</p>
+
+      <p>
+        <strong>Indexing Steps</strong>
+        <ol>
+          <li>
+            Break reference genome into subsequences
+          </li>
+          <li>
+            Create hash table for the positions of these fragments
+          </li>
+          <li>
+            Compress & store auxiliary data to optimize searching
+          </li>
+        </ol>
+      </p>
+
+      <p>
+        Index files allow alignment software to perform fast lookups and avoid linear searching for every read.
+      </p>
+
+      <p>After alignment, convert the sequence alignment map to a binary alignment map <strong>(BAM)</strong> for faster lookup</p>
+
+      <p>Then, filter variants by quality score. We don't want to have <strong>false positives</strong> when calling variants.</p>
+
+      <p>Summary statistics for the filtered variants can be viewed using <i>bcftools</i>.</p>
+      
+      <p>The <a href="https://igv.org/doc/desktop/" target="_blank">Integrative Genomics Viewer</a> tool allows us to visualize aligned reads and called variants. Simply laod the aligned BAM file, reference genome, and overlay the VCF file to identify variant locations.</p>
+
+      <h2>Going Forward</h2>
+
+      <p>Explained above, and through the associated <a href="https://github.com/christopherbui/bioinformatics-projects/blob/main/ngs-analysis/code/NGS_analysis_pipeline.ipynb">Jupyter Notebook code</a> was a traditional statistical approach to identifying variants of a genomic sequence relative to a reference genome.</p>
+
+      <p>Today there are machine learning based callers such as <strong>DeepVariant</strong> by Google that are based on CNNs to call SNPs and indels (insertions / deletions). Another ML-based variant caller is <strong>Clair3</strong>.</p>
+
+      <p>In addition to identifying variants, machine learning models today can also:</p>
+      <ul>
+        <li>
+          Predict epigenetic modifications based on DNA methylation data
+        </li>
+        <li>
+          Predict functional regulatory regions in the genome based on ATAC-seq data
+        </li>
+        <li>
+          Predict effects of protein mutations or drug response
+        </li>
+        <li>
+          Classify the type of variants (somatic vs germline)
+        </li>
+      </ul>
+      
+    </div>
