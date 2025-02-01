@@ -5,6 +5,23 @@
     text-align: left; /* Ensure the text stays left-aligned */
 }
 
+.gradient-text {
+    background: linear-gradient(45deg, #007AFF, #00C6FF, #32CD32, #2E8B57);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Gradient applied to text */
+    display: inline-block;
+    position: relative;
+}
+
+.emoji {
+    position: relative;
+    color: inherit;  /* Ensures emoji takes the default text color */
+    -webkit-text-fill-color: initial; /* Ensures emoji is not affected by gradient */
+    background: none; /* Removes background influence */
+}
+
+
 /* Optional: Media query to adjust text width on smaller screens */
 @media (max-width: 768px) {
     .contact-text {
@@ -32,4 +49,10 @@ a:hover {
 /* Lower the text and contact list using margin */
 .container {
     margin-top: 50px; /* Adjust this value to control how far down the content moves */
+}
+
+ul {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Adjust margin if needed */
 }
