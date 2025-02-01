@@ -21,9 +21,28 @@ document.addEventListener("DOMContentLoaded", function () {
     typeWriter();
 
     // Add event listener for the "Home" link to reload the page and reset the URL
-    document.querySelector('a[href="#home"]').addEventListener('click', function (e) {
-        e.preventDefault(); // Prevent default anchor behavior
-        history.replaceState(null, null, window.location.pathname); // Remove the #section from the URL
-        location.reload(); // Fully reload the page
+    // document.querySelector('a[href="#home"]').addEventListener('click', function (e) {
+    //     e.preventDefault(); // Prevent default anchor behavior
+    //     history.replaceState(null, null, window.location.pathname); // Remove the #section from the URL
+    //     location.reload(); // Fully reload the page
+    // });
+
+    // Smooth transition when clicking links on same page
+    const navbarHeight = document.querySelector(".navbar").offsetHeight;
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - navbarHeight,
+                    behavior: "smooth"
+                });
+            }
+        });
     });
 });

@@ -11,19 +11,20 @@
 }
 
 /* Navbar Styles */
+/* Navbar Styles */
 .navbar {
     font-family: "Inter";
     font-weight: 300;
     background-color: #f8f9fa;  /* Match the background color */
     margin: 0;
-    margin-top: -50px;
-    padding: 0;
-    padding-bottom: 20px;
-    position: relative;
+    padding: 10px 0;
+    position: fixed; /* Make navbar fixed at the top */
     top: 0;
     width: 100%;
     z-index: 1000;
+    transition: background-color 0.3s ease-in-out; /* Smooth transition effect */
 }
+
 
 .navbar-nav {
     display: flex;
