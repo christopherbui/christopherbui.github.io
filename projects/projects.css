@@ -12,6 +12,14 @@ body > * {
     padding-right: 15px;
 }
 
+#projects-title span {
+    background: linear-gradient(90deg, #007AFF, #00C6FF, #32CD32, #2E8B57);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
 /* Project Card Styling */
 .project-item .card {
     border: 2px solid black;

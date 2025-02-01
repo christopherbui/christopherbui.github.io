@@ -7,6 +7,13 @@
     padding-right: 15px;
 }
 
+#blog-title span {
+    background: linear-gradient(90deg, #007AFF, #00C6FF, #32CD32, #2E8B57);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 /* Blog Card Styling */
 .blog-item .card {
     border: 2px solid black;

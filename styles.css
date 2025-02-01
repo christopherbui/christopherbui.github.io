@@ -15,7 +15,9 @@
 .navbar {
     font-family: "Inter";
     font-weight: 300;
-    background-color: #f8f9fa;  /* Match the background color */
+    /* background-color: #f8f9fa; */
+    background: rgba(235, 235, 236, 0.5);
+    backdrop-filter: blur(8px);
     margin: 0;
     padding: 10px 0;
     position: fixed; /* Make navbar fixed at the top */
