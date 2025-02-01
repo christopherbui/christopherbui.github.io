@@ -85,28 +85,50 @@ body {
 
 /* Profile Image */
 /* Profile Image Wrapper */
+/* Profile Image Wrapper (Gradient Border) */
 .profile-image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 150px; /* Adjusted size */
+    height: 150px;
     border-radius: 50%;
-    margin-bottom: 20px; /* Space between image and text */
-    background: linear-gradient(45deg, #4A90E2, #007AFF, #00C6FF, #5DADE2);
-    padding: 3px; /* Border width */
+    padding: 5px; /* Creates space for the gradient border */
+    /* background: linear-gradient(45deg, #4A90E2, #007AFF, #00C6FF, #5DADE2); */
+    /* background: linear-gradient(45deg, #8B0000, #C71585, #FF1493, #DC143C); */
+    /* background: linear-gradient(45deg, #2E8B57, #3CB371, #32CD32, #00FF7F); */
+    background: linear-gradient(45deg, #007AFF, #00C6FF, #32CD32, #2E8B57);
 }
 
 /* Profile Image */
 .profile-image {
-    width: 100%;
-    height: 100%;
+    width: 142px; /* Ensures correct scaling */
+    height: 142px;
     border-radius: 50%;
     object-fit: cover;
     display: block;
 }
 
+/* Mobile Fix: Ensure Proper Scaling */
+@media (max-width: 768px) {
+    .profile-image-wrapper {
+        width: 110px;
+        height: 110px;
+        padding: 4px; /* Adjusts border thickness */
+    }
+
+    .profile-image {
+        width: 102px;
+        height: 102px;
+    }
+}
+
+
 /* Gradient Text Styling */
 .gradient-text {
-    background: linear-gradient(45deg, #4A90E2, #007AFF, #00C6FF, #5DADE2);
+    /* background: linear-gradient(45deg, #4A90E2, #007AFF, #00C6FF, #5DADE2); */
+    background: linear-gradient(45deg, #007AFF, #00C6FF, #32CD32, #2E8B57);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
