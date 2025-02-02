@@ -12,6 +12,7 @@
     -webkit-text-fill-color: transparent; /* Gradient applied to text */
     display: inline-block;
     position: relative;
+    font-weight: 400;
 }
 
 .emoji {
@@ -19,6 +20,11 @@
     color: inherit;  /* Ensures emoji takes the default text color */
     -webkit-text-fill-color: initial; /* Ensures emoji is not affected by gradient */
     background: none; /* Removes background influence */
+}
+
+#contact-text-description {
+    font-size: 1.1rem;
+    font-weight: 400;
 }
 
 
@@ -38,12 +44,9 @@ a:hover {
     color: #007bff;
 }
 
-.contact-text {
-    font-weight: 300;
-}
-
 .col-md-6 {
-    font-weight: 300;
+    font-size: 1.1rem;
+    font-weight: 400;
 }
 
 /* Lower the text and contact list using margin */

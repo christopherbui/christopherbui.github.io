@@ -1,10 +1,6 @@
-/* Import Source Serif 4 and Inter from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@200;400;700&display=swap');
-
 /* Home Section */
 #home {
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     padding-top: 0px; /* Remove top padding to bring the section closer to the top */
     padding-bottom: 20px;
     margin-top: -180px; /* Negative margin to raise the section */
@@ -13,11 +9,12 @@
 /* Navbar Styles */
 /* Navbar Styles */
 .navbar {
-    font-family: "Inter";
-    font-weight: 300;
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
     /* background-color: #f8f9fa; */
-    background: rgba(235, 235, 236, 0.5);
-    backdrop-filter: blur(8px);
+    background: rgb(245, 245, 245, 0.8);
+    backdrop-filter: blur(7px);
     margin: 0;
     padding: 10px 0;
     position: fixed; /* Make navbar fixed at the top */
@@ -35,12 +32,13 @@
 }
 
 .nav-item .nav-link {
-    color: #000;  /* Consistent text color for links */
+    color: #007AFF;  /* Consistent text color for links */
     padding: 8px 16px;
 }
 
 .nav-item .nav-link:hover {
-    color: #007bff;  /* Color on hover */
+    /*color: #007bff;*/
+    color: #32CD32
 }
 
 /* Remove outline and box shadow from the hamburger menu button */
@@ -62,8 +60,10 @@
 /* Underline the current page link */
 .current-page {
     text-decoration: underline;
-    font-weight: normal;  /* Optional: Make it bold */
-    color: #007bff !important;  /* Optional: Change the color to stand out */
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+    font-weight: bold;  /* Optional: Make it bold */
+    color: #32CD32 !important;  /* Optional: Change the color to stand out */
 }
 
 h1, h2 {
@@ -72,7 +72,7 @@ h1, h2 {
 
 /* Footer Styles */
 footer {
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     font-size: 0.7rem;
     color: #aaaeb2;
     padding: 10px 0;
@@ -81,9 +81,9 @@ footer {
 
 /* Ensure the body has space for the fixed navbar */
 body {
-    font-family: "Inter";
+    font-family: "Helvetica Neue", "Arial", sans-serif;
     padding-top: 70px;
-    background-color: #f8f9fa;
+    background-color: #ffffff; /*#f8f9fa*/
 }
 
 /* Profile Image */
@@ -127,6 +127,9 @@ body {
     }
 }
 
+.profile-description {
+    color: #000000;
+}
 
 /* Gradient Text Styling */
 .gradient-text {

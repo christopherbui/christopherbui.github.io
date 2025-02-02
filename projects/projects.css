@@ -1,6 +1,5 @@
-/* Ensure the main content stretches to push the footer down */
-body > * {
-    flex-grow: 1;
+#projects {
+    background-color: #ffffff;
 }
 
 /* Align Projects Heading with Project Items */
@@ -10,6 +9,7 @@ body > * {
     margin: 0 auto 30px auto;  /* Center the heading and add spacing below */
     padding-left: 15px;  /* Optional: Add padding for more consistent alignment */
     padding-right: 15px;
+    font-weight: 400;
 }
 
 #projects-title span {
@@ -50,19 +50,20 @@ body > * {
     display: flex;
     align-items: center;
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     margin: 12px 0;  /* Adds space both above and below the project cards */
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;  /* Center the project items */
     border-radius: 24px;
-    border: 2px solid black;
+    border: 3px solid black;
     transition: background-color 0.3s ease;  /* Smooth transition for hover effect */
 }
 
 /* Highlight effect on hover */
 .project-item:hover {
-    border-color: #007bff;  /* Transparent blue background on hover */
+    /* border-color: #007bff; Transparent blue background on hover */
+    border-color: #007AFF;
 }
 
 .project-item img {
@@ -82,18 +83,19 @@ body > * {
 /* Optional: Add hover effect for the title links */
 .project-description a:hover {
     text-decoration: none;
-    color: #007bff;
+    color: #007AFF;
 }
 
 /* Center project title and description */
 .card-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     margin-bottom: 6px;
 }
 
 .card-text {
-    font-size: 0.9rem;
+    font-size: 0.96rem;
+    color: #2f2f2f;
 }
 
 /* Responsive Styling for Smaller Screens */
@@ -116,6 +118,8 @@ body > * {
     .project-item {
         flex-direction: column; /* Stack vertically on smaller screens */
         text-align: center;  /* Center the content on smaller screens */
+        margin-left: 12px;
+        margin-right: 12px;
     }
 
     .project-item img {
