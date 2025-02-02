@@ -11,7 +11,7 @@
 .navbar {
     font-family: "Helvetica Neue", "Arial", sans-serif;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500;
     /* background-color: #f8f9fa; */
     background: rgb(245, 245, 245, 0.8);
     backdrop-filter: blur(7px);
@@ -73,7 +73,7 @@ h1, h2 {
 /* Footer Styles */
 footer {
     background-color: #ffffff;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: #aaaeb2;
     padding: 10px 0;
     text-align: center;
@@ -129,6 +129,8 @@ body {
 
 .profile-description {
     color: #000000;
+    font-size: 1.1rem;
+    font-weight: 400;
 }
 
 /* Gradient Text Styling */
@@ -138,7 +140,9 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 
