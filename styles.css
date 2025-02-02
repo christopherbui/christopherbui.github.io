@@ -33,13 +33,13 @@
 }
 
 .nav-item .nav-link {
-    color: #007AFF;  /* Consistent text color for links */
+    color: #474747;  /* Consistent text color for links */
     padding: 8px 16px;
 }
 
 .nav-item .nav-link:hover {
     /*color: #007bff;*/
-    color: #32CD32
+    color: #007AFF;
 }
 
 /* Remove outline and box shadow from the hamburger menu button */
@@ -61,10 +61,10 @@
 /* Underline the current page link */
 .current-page {
     text-decoration: underline;
-    text-decoration-thickness: 2px;
+    text-decoration-thickness: 3px;
     text-underline-offset: 8px;
     font-weight: bold;  /* Optional: Make it bold */
-    color: #32CD32 !important;  /* Optional: Change the color to stand out */
+    color: #007AFF !important;  /* Optional: Change the color to stand out */
 }
 
 /* Footer Styles */
