@@ -1,0 +1,21 @@
+/* Navbar styles for dark mode */
+.navbar-dark .nav-link, .navbar-dark .navbar-brand {
+    color: white !important;
+}
+.navbar {
+    min-height: 60px; /* Adjust as needed */
+    padding: 10px 40px; /* Ensures proper spacing */
+}
+.navbar-nav {
+    display: flex;
+    gap: min(3vw, 16px);
+    flex-grow: 1;
+    justify-content: right;
+}
+.navbar-nav .nav-link {
+    font-size: clamp(1rem, 1.2vw, 1.4rem);
+    transition: font-size 0.2s ease-in-out;
+}
+.navbar-brand {
+    font-size: clamp(1.4rem, 1.5vw, 1.75rem);
+}

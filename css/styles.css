@@ -1,38 +1,51 @@
 /* Smooth transition effect */
 body, .navbar {
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: background-color 0.24s ease-in-out, color 0.24s ease-in-out;
 }
 body.dark-mode {
     background-color: #121212;
     color: white;
 }
 /* Navbar styles for dark mode */
-.navbar-dark .nav-link, .navbar-dark .navbar-brand {
+/* .navbar-dark .nav-link, .navbar-dark .navbar-brand {
     color: white !important;
 }
 .navbar {
-    min-height: 80px; /* Adjust as needed */
-    padding: 15px 0; /* Ensures proper spacing */
+    min-height: 60px;
+    padding: 10px 40px;
 }
+.navbar-nav {
+    display: flex;
+    gap: min(3vw, 16px);
+    flex-grow: 1;
+    justify-content: right;
+}
+.navbar-nav .nav-link {
+    font-size: clamp(1rem, 1.2vw, 1.4rem);
+    transition: font-size 0.2s ease-in-out;
+}
+.navbar-brand {
+    font-size: clamp(1.4rem, 1.5vw, 1.75rem);
+} */
 
 
 /* LIGHT/DARK THEME TOGGLE */
 .theme-toggle-container {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Adds spacing between elements */
+    gap: 10px; /* Increase spacing between sun, switch, and moon */
+    padding-left: 0px; /* Increase spacing from last navbar item */
+    margin-right: auto;
 }
 /* Light/Dark Icons */
 .theme-icon {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
 }
 /* Toggle switch styling */
 .theme-switch {
     position: relative;
     display: inline-block;
-    width: 40px;
-    height: 20px;
+    width: 50px;
+    height: 26px;
 }
 /* Hide default checkbox */
 .theme-switch input {
@@ -56,8 +69,8 @@ body.dark-mode {
 .slider::before {
     content: "";
     position: absolute;
-    width: 16px;
-    height: 16px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     background-color: white;
     top: 2px;
@@ -70,7 +83,7 @@ input:checked + .slider {
 }
 /* Move slider knob when checked */
 input:checked + .slider::before {
-    transform: translateX(20px);
+    transform: translateX(24px);
 }
 .dark-mode .sun-icon {
     filter: brightness(0) invert(1); /* Turns sun white */
@@ -80,7 +93,7 @@ input:checked + .slider::before {
 }
 
 
-/* CUSTOM NAVBAR MENU */
+/* CUSTOM NAVBAR HAMBURGER MENU */
 /* Hide default Bootstrap navbar toggler */
 .navbar-toggler {
     border: none;
@@ -118,6 +131,23 @@ input:checked + .slider::before {
 .dark-mode .hero-section h2,
 .dark-mode .hero-section p {
     color: #f8f9fa; /* Light text for dark mode */
+}
+/* Hero font size */
+.hero-section h1 {
+    font-size: clamp(2rem, 4vw, 4.5rem);
+    font-weight: bold;
+    transition: font-size 0.2s ease-in-out;
+    margin-bottom: clamp(10px, 2vh, 20px); /* Adjusts spacing below h1 */
+}
+.hero-section h2 {
+    font-size: clamp(1.5rem, 2.5vw, 2.8rem);
+    font-weight: 600;
+    transition: font-size 0.2s ease-in-out;
+    margin-bottom: clamp(8px, 1.5vh, 16px); /* Adjusts spacing below h2 */
+}
+.hero-section p {
+    font-size: clamp(1rem, 2vw, 1.8rem);
+    transition: font-size 0.2s ease-in-out;
 }
 
 
@@ -201,4 +231,9 @@ input:checked + .slider::before {
 
 .dark-mode .card-text {
     color: #ddd;
+}
+
+h1 {
+    font-size: 2rem;
+    color: green;
 }
