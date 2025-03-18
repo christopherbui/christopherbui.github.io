@@ -1,0 +1,140 @@
+/* Smooth transition effect */
+body, .navbar {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+/* Navbar styles for dark mode */
+.navbar-dark .nav-link, .navbar-dark .navbar-brand {
+    color: white !important;
+}
+
+.navbar {
+    min-height: 80px; /* Adjust as needed */
+    padding: 15px 0; /* Ensures proper spacing */
+}
+
+
+
+/* Theme Switcher */
+/* Adjust switch alignment */
+.theme-switch {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+/* Increase switch size */
+.form-check-input {
+    width: 40px;
+    height: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Custom outline */
+.form-check-input:focus {
+    box-shadow: 0 0 4px rgba(76, 175, 80, 0.8);
+}
+
+/* Adjust knob position */
+.form-check-input:checked {
+    background-color: #4caf50; /* Green for dark mode */
+    border-color: #388e3c;
+}
+
+/* CUSTOM NAVBAR MENU */
+/* Hide default Bootstrap navbar toggler */
+.navbar-toggler {
+    border: none;
+    background: none;
+    outline: none;
+    box-shadow: none;
+}
+/* Smooth transition for menu icon change */
+#menu-icon {
+    width: 28px;
+    height: 28px;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+
+/* INTRO */
+.hero-section {
+    min-height: 100vh; /* Ensures section takes full screen height */
+    display: flex;
+    flex-direction: column;
+    padding: 160px 0;
+}
+
+/* Default text color */
+.hero-section h1,
+.hero-section h2,
+.hero-section p {
+    color: #333; /* Dark text for light mode */
+}
+/* Change text color when dark mode is active */
+.dark-mode .hero-section h1,
+.dark-mode .hero-section h2,
+.dark-mode .hero-section p {
+    color: #f8f9fa; /* Light text for dark mode */
+}
+
+
+/* ARROW */
+/* Arrow container positioned dynamically */
+.arrow-container {
+    text-align: center;
+    padding-bottom: 20px; /* Ensures space before bottom of screen */
+}
+
+/* Animated arrow */
+/* Ensure both arrows are stacked */
+.animated-arrow {
+    position: relative;
+    width: 40px;
+    display: inline-block; /* Ensures it does not take full width */
+    margin: auto; /* Centers it inside the container */
+    animation: arrow-bounce 1.5s infinite ease-in-out;
+}
+/* Show light arrow by default */
+.light-arrow {
+    display: block;
+}
+/* Hide dark arrow by default */
+.dark-arrow {
+    display: none;
+}
+/* When dark mode is enabled, swap arrows */
+.dark-mode .light-arrow {
+    display: none;
+}
+.dark-mode .dark-arrow {
+    display: block;
+}
+
+/* Keyframes for smooth up & down motion */
+@keyframes arrow-bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Style for "Recent work" text */
+.recent-work-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+/* Dark mode text adjustments */
+.dark-mode .recent-work-text {
+    color: #f8f9fa;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
