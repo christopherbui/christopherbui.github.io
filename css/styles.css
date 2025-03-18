@@ -237,3 +237,39 @@ h1 {
     font-size: 2rem;
     color: green;
 }
+
+#brb {
+    text-align: center; /* Center the text horizontally */
+    font-size: 3rem; /* Adjust the font size */
+    font-weight: bold; /* Optional: make it bold for more impact */
+    
+    /* Apply the gradient */
+    background: linear-gradient(to right, #ff5f5f, #f6bfeb, #ffcc00); /* More pronounced gradient with an additional color */
+    
+    /* Ensure the gradient is clipped to the text with vendor prefixes for compatibility */
+    -webkit-background-clip: text; /* WebKit browsers like Chrome, Safari, Edge */
+    background-clip: text; /* Standard property for other browsers */
+  
+    color: transparent; /* Hide the default text color */
+    
+    /* Optional: If you want to vertically center it within a container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh; /* Adjust to the height of the container if needed */
+  
+    /* Add the bounce animation */
+    animation: bounce 1s infinite; /* Bounce animation with 1-second duration and infinite loop */
+}
+/* Create the bounce keyframes */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0); /* Start and end at the original position */
+    }
+    50% {
+        transform: translateY(-20px); /* Move up by 20px at the middle of the animation */
+    }
+}
+
+  
+  
