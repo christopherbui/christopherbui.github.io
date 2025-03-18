@@ -256,7 +256,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 20vh; /* Adjust to the height of the container if needed */
+    height: 30vh; /* Adjust to the height of the container if needed */
   
     /* Add the bounce animation */
     animation: bounce 1s infinite; /* Bounce animation with 1-second duration and infinite loop */
