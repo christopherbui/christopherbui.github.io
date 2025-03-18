@@ -23,17 +23,15 @@ document.addEventListener("DOMContentLoaded", function () {
             navbar.classList.replace("navbar-dark", "navbar-light");
             navbar.classList.replace("bg-dark", "bg-light");
         }
-        updateMenuIcon(); // Ensure the menu icon updates when theme changes
     }
 
     function updateMenuIcon() {
-        const isDarkMode = body.classList.contains("dark-mode");
         const isMenuOpen = navbarCollapse.classList.contains("show");
 
         if (isMenuOpen) {
-            menuIcon.src = isDarkMode ? "img/x-white.svg" : "img/x.svg";
+            menuIcon.src = "img/x.svg";
         } else {
-            menuIcon.src = isDarkMode ? "img/align-right-white.svg" : "img/align-right.svg";
+            menuIcon.src = "img/align-right.svg";
         }
     }
 
@@ -54,11 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
         themeToggle.checked = e.matches;
     });
 
-    // Menu toggle
-    menuToggle.addEventListener("click", function () {
-        updateMenuIcon();
-    });
-
     // Ensure correct icon when menu is expanded
     navbarCollapse.addEventListener("shown.bs.collapse", function () {
         updateMenuIcon();
@@ -66,9 +59,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Ensure correct icon when menu is closed
     navbarCollapse.addEventListener("hidden.bs.collapse", function () {
-        setTimeout(updateMenuIcon, 10); // Ensure Bootstrap animation finishes before updating
+        updateMenuIcon();
     });
 
-    // Ensure correct icon on page load
-    updateMenuIcon();
+    // Arrow scrolls to project section
+    const scrollArrows = document.querySelectorAll(".animated-arrow"); // Select both arrows
+    const projectsSection = document.getElementById("projects");
+
+    if (scrollArrows.length > 0 && projectsSection) {
+        scrollArrows.forEach(arrow => {
+            arrow.addEventListener("click", function () {
+                projectsSection.scrollIntoView({ behavior: "smooth" });
+            });
+        });
+    }
 });

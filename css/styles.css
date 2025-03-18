@@ -2,50 +2,83 @@
 body, .navbar {
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-
 body.dark-mode {
     background-color: #121212;
     color: white;
 }
-
 /* Navbar styles for dark mode */
 .navbar-dark .nav-link, .navbar-dark .navbar-brand {
     color: white !important;
 }
-
 .navbar {
     min-height: 80px; /* Adjust as needed */
     padding: 15px 0; /* Ensures proper spacing */
 }
 
 
-
-/* Theme Switcher */
-/* Adjust switch alignment */
-.theme-switch {
+/* LIGHT/DARK THEME TOGGLE */
+.theme-toggle-container {
     display: flex;
     align-items: center;
-    margin-left: 15px;
+    gap: 10px; /* Adds spacing between elements */
 }
-
-/* Increase switch size */
-.form-check-input {
+/* Light/Dark Icons */
+.theme-icon {
+    width: 20px;
+    height: 20px;
+}
+/* Toggle switch styling */
+.theme-switch {
+    position: relative;
+    display: inline-block;
     width: 40px;
     height: 20px;
+}
+/* Hide default checkbox */
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+/* Slider (toggle button) */
+.slider {
+    position: absolute;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.3s;
+    border-radius: 50px;
 }
-
-/* Custom outline */
-.form-check-input:focus {
-    box-shadow: 0 0 4px rgba(76, 175, 80, 0.8);
+/* Toggle switch knob */
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: white;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.16s ease-in-out;
 }
-
-/* Adjust knob position */
-.form-check-input:checked {
+/* Dark mode active */
+input:checked + .slider {
     background-color: #4caf50; /* Green for dark mode */
-    border-color: #388e3c;
 }
+/* Move slider knob when checked */
+input:checked + .slider::before {
+    transform: translateX(20px);
+}
+.dark-mode .sun-icon {
+    filter: brightness(0) invert(1); /* Turns sun white */
+}
+.dark-mode .moon-icon {
+    filter: brightness(0) invert(1); /* Turns moon white */
+}
+
 
 /* CUSTOM NAVBAR MENU */
 /* Hide default Bootstrap navbar toggler */
@@ -61,6 +94,10 @@ body.dark-mode {
     height: 28px;
     transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
+/* Ensure menu icon turns white in dark mode */
+.dark-mode #menu-icon {
+    filter: brightness(0) invert(1);
+}
 
 
 /* INTRO */
@@ -70,7 +107,6 @@ body.dark-mode {
     flex-direction: column;
     padding: 160px 0;
 }
-
 /* Default text color */
 .hero-section h1,
 .hero-section h2,
@@ -91,50 +127,78 @@ body.dark-mode {
     text-align: center;
     padding-bottom: 20px; /* Ensures space before bottom of screen */
 }
-
 /* Animated arrow */
-/* Ensure both arrows are stacked */
 .animated-arrow {
     position: relative;
     width: 40px;
     display: inline-block; /* Ensures it does not take full width */
     margin: auto; /* Centers it inside the container */
     animation: arrow-bounce 1.5s infinite ease-in-out;
+    cursor: pointer;
 }
 /* Show light arrow by default */
-.light-arrow {
-    display: block;
-}
-/* Hide dark arrow by default */
-.dark-arrow {
-    display: none;
-}
-/* When dark mode is enabled, swap arrows */
 .dark-mode .light-arrow {
-    display: none;
+    filter: brightness(0) invert(1); /* Turns moon white */
 }
-.dark-mode .dark-arrow {
-    display: block;
-}
-
 /* Keyframes for smooth up & down motion */
 @keyframes arrow-bounce {
     0% { transform: translateY(0); }
     50% { transform: translateY(10px); }
     100% { transform: translateY(0); }
 }
-
 /* Style for "Recent work" text */
 .recent-work-text {
     font-size: 1.25rem;
     font-weight: 500;
     margin-bottom: 10px;
 }
-
 /* Dark mode text adjustments */
 .dark-mode .recent-work-text {
     color: #f8f9fa;
     font-size: 1.25rem;
     font-weight: 500;
     margin-bottom: 10px;
+}
+
+
+/* PROJECT CARDS */
+/* Ensure project section has proper spacing */
+/* Project Section Spacing */
+.projects-section {
+    padding: 60px 0;
+}
+
+/* Smooth resizing and flex growth */
+.card {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Smooth hover effect */
+.card:hover {
+    transform: scale(1.038);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Ensure images scale properly */
+.card-img-top {
+    object-fit: cover;
+    height: 200px;
+}
+
+/* Dark mode styling */
+.dark-mode .card {
+    background-color: #1e1e1e;
+    color: white;
+    border: 1px solid #444;
+}
+
+.dark-mode .card-title {
+    color: #f8f9fa;
+}
+
+.dark-mode .card-text {
+    color: #ddd;
 }
