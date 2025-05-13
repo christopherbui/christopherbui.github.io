@@ -16,8 +16,13 @@ export default function Projects() {
 
         {/* Project 1 */}
         <div className="card bg-base-100 rounded-xl shadow-[0_0_10px_rgba(0,0,0,0.2)] transition-transform hover:scale-[1.06]">
-          <figure className="pt-8 pb-4">
-            <img className="w-fit h-36 object-cover rounded-md" src="/img/project-thumbnails/dna.png" alt="NGS Analysis Pipeline"/>
+          <figure className="pt-8 pb-4 overflow-hidden rounded-xl flex justify-center items-center">
+            <div className="rounded-xl overflow-hidden">
+              <img
+                className="h-36 w-auto object-contain"
+                src="/img/project-thumbnails/dna.png"
+                alt="NGS Analysis Pipeline"/>
+            </div>
           </figure>
           <div className="card-body">
             <h2 className="card-title">Next Generation Sequencing Analysis Pipeline</h2>
@@ -37,8 +42,13 @@ export default function Projects() {
 
         {/* Project 2 */}
         <div className="card bg-base-100 rounded-xl shadow-[0_0_10px_rgba(0,0,0,0.2)] transition-transform hover:scale-[1.06]">
-          <figure className="pt-8 pb-4">
-            <img className="w-fit h-36 object-cover rounded-md" src="/img/project-thumbnails/histopathologic_cancer.png" alt="Histopathologic Cancer Detection"/>
+          <figure className="pt-8 pb-4 overflow-hidden rounded-xl flex justify-center items-center">
+            <div className="rounded-xl overflow-hidden">
+              <img
+                className="h-36 w-auto object-contain"
+                src="/img/project-thumbnails/histopathologic_cancer.png"
+                alt="Histopathologic Cancer Detection"/>
+            </div>
           </figure>
           <div className="card-body">
             <h2 className="card-title">Histopathologic Cancer Detection</h2>
@@ -58,8 +68,13 @@ export default function Projects() {
 
         {/* Project 3 */}
         <div className="card bg-base-100 rounded-xl shadow-[0_0_10px_rgba(0,0,0,0.2)] transition-transform hover:scale-[1.06]">
-          <figure className="pt-8 pb-4">
-            <img className="w-fit h-36 object-cover rounded-md" src="/img/project-thumbnails/cell_segmentation.png" alt="Cell Image Segmentation"/>
+          <figure className="pt-8 pb-4 overflow-hidden rounded-xl flex justify-center items-center">
+            <div className="rounded-xl overflow-hidden">
+              <img
+                className="h-36 w-auto object-contain"
+                src="/img/project-thumbnails/cell_segmentation.png"
+                alt="Cell Image Segmentation"/>
+            </div>
           </figure>
           <div className="card-body">
             <h2 className="card-title">Cell Image Segmentation</h2>
@@ -79,8 +94,14 @@ export default function Projects() {
 
         {/* Project 4 */}
         <div className="card bg-base-100 rounded-xl shadow-[0_0_10px_rgba(0,0,0,0.2)] transition-transform hover:scale-[1.06]">
-          <figure className="pt-8 pb-4">
-            <img className="w-fit h-36 object-cover rounded-xl" src="/img/project-thumbnails/chest_xray.png" alt="Chest X-Ray GAN"/>
+          <figure className="pt-8 pb-4 overflow-hidden rounded-xl flex justify-center items-center">
+            <div className="rounded-xl overflow-hidden">
+              <img
+                className="h-36 w-auto object-contain"
+                src="/img/project-thumbnails/chest_xray.png"
+                alt="Chest X-Ray GAN"
+              />
+            </div>
           </figure>
           <div className="card-body">
             <h2 className="card-title">Chest X-Ray Generative Adversarial Network</h2>
@@ -100,8 +121,14 @@ export default function Projects() {
 
         {/* Project 5 */}
         <div className="card bg-base-100 rounded-xl shadow-[0_0_10px_rgba(0,0,0,0.2)] transition-transform hover:scale-[1.06]">
-          <figure className="pt-8 pb-4">
-            <img className="w-fit h-36 object-cover rounded-md" src="/img/project-thumbnails/cluster_plot.png" alt="Lymphoma Microarray Clustering Analysis"/>
+          <figure className="pt-8 pb-4 overflow-hidden rounded-xl flex justify-center items-center">
+            <div className="rounded-xl overflow-hidden">
+              <img
+                className="h-36 w-auto object-contain"
+                src="/img/project-thumbnails/cluster_plot.png"
+                alt="Lymphoma Microarray Clustering Analysis"
+              />
+            </div>
           </figure>
           <div className="card-body">
             <h2 className="card-title">Lymphoma Cancer Microarray Clustering Analysis</h2>
@@ -121,8 +148,13 @@ export default function Projects() {
 
         {/* Project 6 */}
         <div className="card bg-base-100 rounded-xl shadow-[0_0_10px_rgba(0,0,0,0.2)] transition-transform hover:scale-[1.06]">
-          <figure className="pt-8 pb-4">
-            <img className="w-fit h-36 object-cover rounded-md" src="/img/project-thumbnails/question_answer.png" alt="Wikipedia Question & Answer Model"/>
+          <figure className="pt-8 pb-4 overflow-hidden rounded-xl flex justify-center items-center">
+            <div className="rounded-xl overflow-hidden">
+              <img
+                className="h-36 w-auto object-contain"
+                src="/img/project-thumbnails/question_answer.png"
+                alt="Wikipedia Question & Answer Model"/>
+            </div>
           </figure>
           <div className="card-body">
             <h2 className="card-title">Wikipedia Question & Answer Model</h2>
