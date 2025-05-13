@@ -54,21 +54,21 @@ export default function Contact() {
         <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-4 w-full max-w-xl">
           <input
             type="text"
-            name="user_name"
-            placeholder="Your Name"
+            name="name"
+            placeholder="Name"
             required
             className="input input-bordered w-full border-[2px] border-neutral-500 rounded-md focus:outline-none focus:border-none focus:ring-2 focus:ring-[rgb(245,118,118)]"
           />
           <input
             type="email"
-            name="user_email"
-            placeholder="Your Email"
+            name="email"
+            placeholder="Email"
             required
             className="input input-bordered w-full border-[2px] border-neutral-500 rounded-md focus:outline-none focus:border-none focus:ring-2 focus:ring-[rgb(245,118,118)]"
           />
           <textarea
             name="message"
-            placeholder="Your Message"
+            placeholder="Message"
             required
             className="textarea textarea-bordered w-full h-32 border-[2px] border-neutral-500 rounded-md focus:outline-none focus:border-none focus:ring-2 focus:ring-[rgb(245,118,118)]"
           />
