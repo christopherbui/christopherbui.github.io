@@ -5,7 +5,7 @@ export default function Projects() {
     <div className="max-w-6xl mx-auto px-2 pt-8 pb-20">
       <h1 className="text-4xl text-[rgb(106,188,104)] font-lilex font-normal mb-6 text-center">Highlighted Projects</h1>
 
-            {/* View All Projects button */}
+      {/* View All Projects button */}
       <div className="mb-8 flex justify-end">
         <Link to="/all-projects" className="px-4 py-2 rounded-lg text-white font-lilex bg-[rgb(86,162,238)] hover:bg-[rgb(66,142,218)] transition">
           View All Projects →
