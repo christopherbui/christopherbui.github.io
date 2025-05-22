@@ -31,7 +31,7 @@ export default function MarkdownPage() {
             <h3 className="text-[1.4rem] text-[rgb(181,114,232)] font-medium font-lilex mt-8 mb-4" {...props} />
           ),
           p: ({ node, ...props }) => (
-            <p className="text-[1rem] text-neutral-700 font-normal font-lilex leading-normal mt-2 mb-4" {...props} />
+            <p className="text-[1rem] text-neutral-800 font-normal font-lilex leading-normal mt-2 mb-4" {...props} />
           ),
           li: ({ node, ...props }) => (
             <li className="text-[1rem] text-neutral-700 font-normal font-lilex list-disc ml-10 my-2" {...props} />
