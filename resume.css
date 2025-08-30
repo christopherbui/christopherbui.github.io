@@ -11,6 +11,7 @@
   --green: #6ABC68;
   --purple: #B672E8;
   --yellow: #E8AA1D;
+  --blue2: #328fec;
 }
 
 @page {
@@ -51,7 +52,7 @@ body {
 .header-row h1 {
   font-size: 30px;
   font-weight: 500;
-  color: var(--primary-color);
+  color: var(--blue2);
   margin: 0;
 }
 
@@ -79,7 +80,7 @@ body {
   color: var(--yellow);
 }
 .fa-linkedin {
-  color: var(--blue);
+  color: var(--blue2);
 }
 .fa-github {
   color: var(--purple);
@@ -100,7 +101,7 @@ section {
 
 h2 {
   font-size: 18px;
-  color: var(--primary-color);
+  color: var(--blue2);
   border-bottom: 1px solid var(--base1);
   margin-top: 15px;
   margin-bottom: 8px;
@@ -135,14 +136,14 @@ ul li {
 
 .company {
   font-size: 12px;
-  color: var(--blue);
+  color: var(--blue2);
   margin-top: 2px;
 }
 
 .job-meta {
   text-align: right;
   font-size: 12px;
-  color: var(--blue);
+  color: var(--blue2);
   white-space: nowrap;
   line-height: 1.2;
 }
@@ -153,4 +154,5 @@ ul li {
 
 .date {
   font-weight: normal;
+  color: var(--blue2;
 }
