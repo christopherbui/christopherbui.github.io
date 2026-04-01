@@ -10,7 +10,7 @@ export default function Hero() {
         <div className="text-[rgb(86,162,238)]">
           <h1 className="text-5xl font-semibold pt-10">Hi There! 👋</h1>
           <p className="py-6 pr-20 max-w-3xl text-[1.7rem] font-normal">
-            I'm Christopher Bui, a data scientist working in cancer research @ UCLA Health.
+            I'm Christopher Bui, a data scientist working in biomedical research & healthcare.
           </p>
           <p className="max-w-2xl text-[1.7rem] font-normal text-neutral-700">
             I am driven to find innovative solutions to highly impactful challenges!
