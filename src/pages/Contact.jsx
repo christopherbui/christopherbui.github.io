@@ -1,6 +1,11 @@
+import { useDocumentTitle } from '../hooks/useDocumentTitle.js';
+
 export default function Contact() {
+  useDocumentTitle('Contact — Christopher Bui');
+
   return (
     <section className="contact">
+      <h1>Get in touch!</h1>
       <dl className="contact-list">
         <dt>LinkedIn</dt>
         <dd>

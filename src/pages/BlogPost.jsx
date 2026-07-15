@@ -1,9 +1,15 @@
 import { useParams, Link } from 'react-router-dom';
-import { getPostHtml } from '../content/posts.js';
+import { getPostHtml, posts } from '../content/posts.js';
+import { useDocumentTitle } from '../hooks/useDocumentTitle.js';
 
 export default function BlogPost() {
   const { slug } = useParams();
   const html = getPostHtml(slug);
+  const post = posts.find((p) => p.slug === slug);
+
+  useDocumentTitle(
+    post ? `${post.title} — Christopher Bui` : 'Post not found — Christopher Bui'
+  );
 
   if (html === null) {
     return (

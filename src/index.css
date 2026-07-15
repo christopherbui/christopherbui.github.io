@@ -57,7 +57,7 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image: radial-gradient(#e5e7eb 1.4px, transparent 1.2px);
+  background-image: radial-gradient(#e5e7eb 1.2px, transparent 1.4px);
   background-size: 22px 22px;
 }
 
@@ -120,7 +120,7 @@ a:hover {
 
 .brand-name {
   font-weight: 600;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 /* Hamburger toggle (hidden on wide screens) */
@@ -254,6 +254,10 @@ a:hover {
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+  }
+
+  .brand-name {
+    font-size: 1.8rem;
   }
 
   .nav-toggle {
