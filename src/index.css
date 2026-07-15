@@ -202,8 +202,8 @@ a:hover {
   color: var(--nav-link);
 }
 
-.site-nav a:hover {
-  color: var(--text);
+.site-nav a:not(.active):hover {
+  color: var(--link);
   text-decoration: none;
 }
 
