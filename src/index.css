@@ -23,6 +23,7 @@
   --link: #248721;
   --border: #e5e7eb;
   --max-width: 640px;
+  --max-width-wide: 900px;
 }
 
 *,
@@ -69,15 +70,22 @@ a:hover {
   text-decoration: underline;
 }
 
+/* The page container is always wide so the header/navbar spans a consistent
+   width on every page; the content column is narrowed separately below. */
 .page {
-  max-width: var(--max-width);
+  max-width: var(--max-width-wide);
   margin: 0 auto;
   padding: 3rem 1.25rem 6rem;
 }
 
+/* Content sits in a narrower column, left-aligned with the brand */
+.content {
+  max-width: var(--max-width);
+}
+
 /* Individual blog posts read wider so prose, code, and images aren't cramped */
-.page--wide {
-  max-width: 900px;
+.page--wide .content {
+  max-width: none;
 }
 
 /* Header: icon + name on the left, nav on the right (mobile-first) */
@@ -305,6 +313,11 @@ h1 {
   padding: 0.4rem 0;
 }
 
+/* Thin, light-gray separator between entries (not after the last one) */
+.blog-list li:not(:last-child) {
+  border-bottom: 1px solid var(--border);
+}
+
 .blog-list li a {
   position: relative;
   display: inline-block;
@@ -437,4 +450,5 @@ h1 {
   padding-top: 1.5rem;
   color: var(--muted);
   font-size: 0.9rem;
+  text-align: center;
 }
