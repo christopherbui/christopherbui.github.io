@@ -1,0 +1,11 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Christopher Bui">
+  <circle cx="50" cy="50" r="48" fill="#3587de"/>
+  <g transform="translate(50,50) scale(0.88) translate(-54,-34)" fill="#ffffff">
+    <!-- Blocky C: left-corner chamfers, left bar pulled inward; right arm-ends turn in with short vertical tails and chamfered top-right/bottom-right corners -->
+    <path d="M25,9 L44,9 L49,14 L49,24 L40,24 L40,18 L29,18 L29,50 L40,50 L40,44 L49,44 L49,54 L44,59 L25,59 L19,53 L19,15 Z"/>
+    <!-- Blocky B on the same baseline as the C: chamfered top-right & bottom-right corners, middle bar notched inward with a '<' point -->
+    <path fill-rule="evenodd" d="M57,9 L82,9 L89,16 L89,28 L81,33.5 L89,39 L89,52 L82,59 L57,59 Z
+      M66,18 L80,18 L80,28 L66,28 Z
+      M66,39 L80,39 L80,50 L66,50 Z"/>
+  </g>
+</svg>
