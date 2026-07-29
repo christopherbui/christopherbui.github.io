@@ -112,9 +112,10 @@ a:hover {
   text-decoration: none;
 }
 
+/* The mark is wider than it is tall, so pin the height and let width follow */
 .brand-icon {
-  width: 34px;
-  height: 34px;
+  width: auto;
+  height: 30px;
   display: block;
 }
 

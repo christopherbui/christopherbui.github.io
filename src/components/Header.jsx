@@ -9,7 +9,7 @@ export default function Header() {
     <header className="site-header">
       <div className="header-bar">
         <Link to="/" className="brand" onClick={close}>
-          <img src="/img/monogram.svg" alt="" className="brand-icon" />
+          <img src="/img/logo_green.svg" alt="" className="brand-icon" />
           <span className="brand-name">Christopher Bui</span>
         </Link>
 
